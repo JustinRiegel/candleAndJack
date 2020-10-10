@@ -10,6 +10,7 @@ public class DecoLight : MonoBehaviour
     [SerializeField] Sprite offSprite;
     [SerializeField] GameObject attractor;
     [SerializeField] Vector2 attractorOffset;
+    [SerializeField] float timeToAutoOn = -1;
 
     SpriteRenderer spriteRenderer;
     private bool lightOn = false;
@@ -63,6 +64,12 @@ public class DecoLight : MonoBehaviour
             //attractor stuff
             GameObject newAttractor = Instantiate(attractor, transform.position + threeDLightOffset, Quaternion.identity, transform) as GameObject;
             lightManager.AddAttractor(newAttractor);
+        }
+
+        //Automatically turn the light back on after some amount of time
+        if (timeToAutoOn > 0)
+        {
+            Invoke("TurnOnLight", timeToAutoOn);
         }
     }
 
