@@ -16,6 +16,7 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] float drawDistance = 5f;
     [SerializeField] GameObject[] basePath;
     [SerializeField] bool linearPath = false;
+    [SerializeField] bool canBeDistractedByLight = true;
 
     private bool hasTarget = true;
     private int currentDefaultPathPoint = 0;
@@ -32,7 +33,7 @@ public class PathfinderAI : MonoBehaviour
     void Start()
     {
         seeker = GetComponent<Seeker>();
-        rb = GetComponent < Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         if (target == null)
         {
@@ -84,7 +85,7 @@ public class PathfinderAI : MonoBehaviour
             return;
         }
 
-        if(currentWaypoint >= path.vectorPath.Count)
+        if (currentWaypoint >= path.vectorPath.Count)
         {
             //we might be able to use this to turn off the light!
             reachedEndOfPath = true;
@@ -168,6 +169,26 @@ public class PathfinderAI : MonoBehaviour
         }
         retVal = Mathf.Clamp(retVal, 0, basePath.Length - 1);
         return retVal;
+    }
+
+    public bool GetCanBeDistractedByAttractor()
+        {
+        return canBeDistractedByLight;
+        }
+
+    public void SetNewTarget(GameObject newTarget)
+    {
+        if (newTarget == null)
+        {
+            hasTarget = false;
+            target = null;
+        }
+        else
+        {
+            hasTarget = true;
+            target = newTarget.transform;
+        }
+        DeterminePath();
     }
 
 }
