@@ -1501,27 +1501,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1425257955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8753123319393372408, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
-  m_PrefabInstance: {fileID: 8753123318515825947}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &1425257956
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425257955}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.62
 --- !u!114 &1640026366 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8860390154973575104, guid: 7cfc2acd5a1ad164aa71480a57c2deda, type: 3}
@@ -1955,6 +1934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candle
       objectReference: {fileID: 0}
+    - target: {fileID: 90125094832323016, guid: cabda80a0f58fa54ca289e984e04654c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabda80a0f58fa54ca289e984e04654c, type: 3}
 --- !u!1001 &6239143814078803061
@@ -2081,10 +2064,6 @@ PrefabInstance:
     - target: {fileID: 8753123319393372408, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
       propertyPath: m_Name
       value: Jack
-      objectReference: {fileID: 0}
-    - target: {fileID: 8753123319393372408, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8753123319393372413, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
       propertyPath: m_LocalPosition.x
