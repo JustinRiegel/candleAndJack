@@ -235,7 +235,7 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 100
   nextWaypointDistance: 1
-  drawDistance: 5
+  drawDistance: 10
   basePath:
   - {fileID: 8965893457586613206}
   - {fileID: 8965893458553771434}
