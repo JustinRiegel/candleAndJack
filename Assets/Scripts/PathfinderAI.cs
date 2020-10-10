@@ -143,7 +143,7 @@ public class PathfinderAI : MonoBehaviour
             }
             else
             {
-                if (currentDefaultPathPoint >= basePath.Length)
+                if (currentDefaultPathPoint >= basePath.Length - 1)
                 {
                     isLinearPathReversed = true;
                     retVal = basePath.Length - 1;
@@ -157,7 +157,7 @@ public class PathfinderAI : MonoBehaviour
         else
         //for cycling paths
         {
-            if (currentDefaultPathPoint >= basePath.Length)
+            if (currentDefaultPathPoint >= basePath.Length - 1)
             {
                 retVal = 0;
             }
