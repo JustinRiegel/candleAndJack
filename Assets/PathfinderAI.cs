@@ -166,6 +166,7 @@ public class PathfinderAI : MonoBehaviour
                 retVal = currentDefaultPathPoint + 1;
             }
         }
+        retVal = Mathf.Clamp(retVal, 0, basePath.Length);
         return retVal;
     }
 
