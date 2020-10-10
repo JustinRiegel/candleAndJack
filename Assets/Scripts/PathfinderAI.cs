@@ -5,6 +5,7 @@ using Pathfinding;
 using System.Security.Cryptography;
 using System.Linq;
 using UnityEditor.Experimental.Rendering;
+using System;
 
 public class PathfinderAI : MonoBehaviour
 {
@@ -40,7 +41,13 @@ public class PathfinderAI : MonoBehaviour
             hasTarget = false;
         }
 
-        InvokeRepeating("DeterminePath", 0f, 0.5f);
+        if (basePath == null || basePath.Length == 0)
+        {
+            //if the base path is empty set it to itself
+            basePath = new GameObject[] {gameObject};
+        }
+
+            InvokeRepeating("DeterminePath", 0f, 0.5f);
     }
 
     void DeterminePath()
