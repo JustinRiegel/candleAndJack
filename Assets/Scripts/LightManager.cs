@@ -28,7 +28,7 @@ public class LightManager : MonoBehaviour
     public GameObject AddClosestAttractor(GameObject source)
     {
         Vector2 sourceLocation = source.transform.position;
-        float lowestDistance = 9999999;
+        float lowestDistance = float.MaxValue;
         GameObject retval = null;
 
         foreach(GameObject attractor in attractorList)
