@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8860390154973575104, guid: 7cfc2acd5a1ad164aa71480a57c2deda, type: 3}
-      propertyPath: interactUIElement
-      value: 
-      objectReference: {fileID: 6598947557706402435, guid: 9146879e6fc7ddc41873e152d22718bc, type: 3}
-    - target: {fileID: 8860390154973575104, guid: 7cfc2acd5a1ad164aa71480a57c2deda, type: 3}
-      propertyPath: interactUIOffset.y
-      value: -2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8860390154973575107, guid: 7cfc2acd5a1ad164aa71480a57c2deda, type: 3}
       propertyPath: m_Name
       value: deco_lamp
@@ -17825,14 +17817,6 @@ PrefabInstance:
     - target: {fileID: 1553048427153915142, guid: 87bab2f925dd2d8448cd9f35ca549310, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553048427153915257, guid: 87bab2f925dd2d8448cd9f35ca549310, type: 3}
-      propertyPath: interactUIOffset.y
-      value: -2.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553048427153915257, guid: 87bab2f925dd2d8448cd9f35ca549310, type: 3}
-      propertyPath: interactUIOffset.x
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87bab2f925dd2d8448cd9f35ca549310, type: 3}
