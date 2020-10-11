@@ -11,6 +11,8 @@ public class DecoLight : MonoBehaviour
     [SerializeField] GameObject attractor;
     [SerializeField] Vector2 attractorOffset;
     [SerializeField] float timeToAutoOn = -1;
+    [SerializeField] Material defaultMaterial;
+    [SerializeField] Material outlineMaterial;
 
     SpriteRenderer spriteRenderer;
     private bool lightOn = false;
@@ -94,4 +96,16 @@ public class DecoLight : MonoBehaviour
             }
         }
     }
+
+    public void SetJackInLight(bool isJackInLight)
+    {
+        if(lightOn && isJackInLight)
+        {
+            spriteRenderer.material = outlineMaterial;
+        }
+        else
+        {
+            spriteRenderer.material = defaultMaterial;
+        }
+    }    
 }

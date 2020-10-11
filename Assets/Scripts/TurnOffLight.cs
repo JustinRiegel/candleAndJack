@@ -5,12 +5,19 @@ using UnityEngine;
 public class TurnOffLight : MonoBehaviour
 {
     private bool isJackInLight = false;
+    private DecoLight decoLight;
+
+    private void Start()
+    {
+        decoLight = transform.parent.gameObject.GetComponent<DecoLight>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isJackInLight = true;
+            NotifyJackInLight(isJackInLight);
         }
 
         //something here could be what damages poor little candle
@@ -25,6 +32,7 @@ public class TurnOffLight : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isJackInLight = false;
+            NotifyJackInLight(isJackInLight);
         }
     }
 
@@ -32,9 +40,13 @@ public class TurnOffLight : MonoBehaviour
     {
         if (isJackInLight && Input.GetKeyDown(KeyCode.E))
         {
-            DecoLight dL = transform.parent.gameObject.GetComponent<DecoLight>();
-            dL.TurnOffLight();
+            decoLight.TurnOffLight();
         }
     }
     
+    private void NotifyJackInLight(bool isJackInLight)
+    {
+        decoLight.SetJackInLight(isJackInLight);
+    }
+
 }

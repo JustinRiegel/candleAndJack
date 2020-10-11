@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,3 +101,6 @@ MonoBehaviour:
   offSprite: {fileID: 21300000, guid: e88183c968f579942bcbb5c9afb33220, type: 3}
   attractor: {fileID: 827257686681970657, guid: d404c2df3bb3a244ebc50a205241ca83, type: 3}
   attractorOffset: {x: 0, y: -1}
+  timeToAutoOn: -1
+  defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 79145e3ee34eb714cafa5950a99f70af, type: 2}
