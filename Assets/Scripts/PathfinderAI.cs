@@ -24,7 +24,6 @@ public class PathfinderAI : MonoBehaviour
     private bool onDefaultPath = true;
     private Path path;
     private int currentWaypoint = 0;
-    private bool reachedEndOfPath = false;
     private bool isLinearPathReversed = false;
 
     private Seeker seeker;
@@ -94,18 +93,12 @@ public class PathfinderAI : MonoBehaviour
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            //we might be able to use this to turn off the light!
-            reachedEndOfPath = true;
             if (onDefaultPath)
             {
                 currentDefaultPathPoint = DetermineNextDefaultPathPoint();
                 DeterminePath();
             }
             return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;

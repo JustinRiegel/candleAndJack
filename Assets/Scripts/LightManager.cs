@@ -16,13 +16,11 @@ public class LightManager : MonoBehaviour
     public void AddAttractor(GameObject newAttractor)
     {
         attractorList.Add(newAttractor);
-        Debug.Log("New attractor added" + newAttractor);
         updatePathfinderTargets();
     }
 
     public void RemoveAttractor(GameObject removedAttractor)
     {
-        Debug.Log("light removed" + removedAttractor);
         attractorList.Remove(removedAttractor);
         updatePathfinderTargets();
     }
