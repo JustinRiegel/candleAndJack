@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Linq;
 using UnityEditor.Experimental.Rendering;
 using System;
+using System.Linq.Expressions;
 
 public class PathfinderAI : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] GameObject[] basePath;
     [SerializeField] bool linearPath = false;
     [SerializeField] bool canBeDistractedByLight = true;
+    [SerializeField] float dragMultiplier = 10;
+    [SerializeField] float timeToAutoCanMove = -1;
 
     private bool hasTarget = true;
     private int currentDefaultPathPoint = 0;
@@ -25,6 +28,8 @@ public class PathfinderAI : MonoBehaviour
     private Path path;
     private int currentWaypoint = 0;
     private bool isLinearPathReversed = false;
+    private bool canMove = true;
+    private float defaultDrag = 1;
 
     private Seeker seeker;
     private Rigidbody2D rb;
@@ -45,6 +50,8 @@ public class PathfinderAI : MonoBehaviour
             //if the base path is empty set it to itself
             basePath = new GameObject[] {gameObject};
         }
+
+        defaultDrag = rb.drag;
 
             InvokeRepeating("DeterminePath", 0f, 0.5f);
     }
@@ -87,6 +94,11 @@ public class PathfinderAI : MonoBehaviour
     void FixedUpdate()
     {
         if (path == null)
+        {
+            return;
+        }
+
+        if (!canMove)
         {
             return;
         }
@@ -191,4 +203,26 @@ public class PathfinderAI : MonoBehaviour
         DeterminePath();
     }
 
+    public void SetCanMove(bool newCanMove)
+    {
+        canMove = newCanMove;
+        //if the object is stopped increase the drag so it slows tf down, if its started up again remove the drag clamp
+        rb.drag = canMove ? defaultDrag : defaultDrag * dragMultiplier;
+
+        //Automatically start moving again after an amount of time (defaults to off)
+        if (!canMove && timeToAutoCanMove > 0)
+        {
+            Invoke("AutoCanMove", timeToAutoCanMove);
+        }
+    }
+
+    private void AutoCanMove()
+    {
+        SetCanMove(true);
+    }    
+
+    public bool GetCanMove()
+    {
+        return canMove;
+    }
 }
