@@ -7,7 +7,6 @@ using UnityEngine;
 public class MultiTargetCamera : MonoBehaviour
 {
     [SerializeField] Vector3 offset;
-    [SerializeField] float maxFollowDistanceFromCandle = 9;
     [SerializeField] float jackCameraOffset = 3;
     [SerializeField] float maxZoomDistance = 12;
     [Range(0.5f, 10f)]
