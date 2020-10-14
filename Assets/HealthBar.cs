@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Slider))]
 public class HealthBar : MonoBehaviour
 {
 
-    public Slider slider;
+    private Slider slider;
+
+    private void Start()
+    {
+        slider = GetComponent<Slider>();
+    }
 
     public void SetMaxHealth(int health)
     {
