@@ -9,7 +9,7 @@ public class VictoryObject : MonoBehaviour
     {
         if (collision.CompareTag("Candle"))
         {
-            SceneManager.LoadScene("Win");
+            SceneManagerHelper.instance.ChangeScene("Win");
         }
     }
 }
