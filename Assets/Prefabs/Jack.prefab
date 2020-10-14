@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8753123319393372415}
   - component: {fileID: 8753123319393372412}
   - component: {fileID: 1425257956}
+  - component: {fileID: 1221945068}
   m_Layer: 0
   m_Name: Jack
   m_TagString: Player
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  rb: {fileID: 8753123319393372412}
 --- !u!50 &8753123319393372412
 Rigidbody2D:
   serializedVersion: 4
@@ -136,3 +136,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.62
+--- !u!114 &1221945068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753123319393372408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68aa284cfe60cc444ada28cf928d2dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  maxHealth: 100
+  healingDistanceFromCandle: 4
+  damagingDistanceFromCandle: 5
+  healthGainedPerInterval: 2
+  damageTakenPerInteraval: 1
+  healthChecksPerSecond: 20

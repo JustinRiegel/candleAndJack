@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class VictoryObject : MonoBehaviour
 {
@@ -9,7 +6,7 @@ public class VictoryObject : MonoBehaviour
     {
         if (collision.CompareTag("Candle"))
         {
-            SceneManager.LoadScene("Win");
+            SceneManagerHelper.instance.ChangeScene("Win");
         }
     }
 }

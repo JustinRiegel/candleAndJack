@@ -329,6 +329,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
+--- !u!1001 &1380806163
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889344062374526526, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412971272045941222, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+      propertyPath: m_Name
+      value: SceneManagerHelper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
 --- !u!222 &5840601738781853657
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -475,7 +532,6 @@ GameObject:
   - component: {fileID: 5840601738913082012}
   - component: {fileID: 5840601738913082013}
   - component: {fileID: 5840601738913082014}
-  - component: {fileID: 5840601738913082011}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -483,20 +539,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5840601738913082011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5840601738913082000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eaed33089c3379439ba35f9bdfe69b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_nextSceneId: 0
-  loadSceneButton: {fileID: 5840601738913082014}
 --- !u!222 &5840601738913082012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -578,18 +620,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 2eaed33089c3379439ba35f9bdfe69b1, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 3747804697767298435, guid: 324113e4bbe0baf44a73837dd4bc0df1, type: 3}
+        m_TargetAssemblyTypeName: SceneManagerHelper, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Start
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!224 &5840601738913082015
 RectTransform:
   m_ObjectHideFlags: 0
