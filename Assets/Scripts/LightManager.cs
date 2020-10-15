@@ -25,7 +25,7 @@ public class LightManager : MonoBehaviour
         updatePathfinderTargets();
     }
 
-    public GameObject AddClosestAttractor(GameObject source)
+    public GameObject FindClosestAttractor(GameObject source)
     {
         Vector2 sourceLocation = source.transform.position;
         float lowestDistance = float.MaxValue;
@@ -36,6 +36,7 @@ public class LightManager : MonoBehaviour
             float currentDistance = Vector2.Distance(sourceLocation, attractor.transform.position);
             if (currentDistance < lowestDistance)
             {
+                lowestDistance = currentDistance;
                 retval = attractor;
             }
         }
@@ -48,7 +49,7 @@ public class LightManager : MonoBehaviour
         {
             if (pathfinder.GetCanBeDistractedByAttractor())
             {
-                pathfinder.SetNewTarget(AddClosestAttractor(pathfinder.gameObject));
+                pathfinder.SetNewTarget(FindClosestAttractor(pathfinder.gameObject));
             }
         }
     }
