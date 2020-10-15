@@ -203,6 +203,11 @@ public class PathfinderAI : MonoBehaviour
         DeterminePath();
     }
 
+    public Transform GetTarget()
+    {
+        return target;
+    }
+
     public void SetCanMove(bool newCanMove)
     {
         canMove = newCanMove;
