@@ -52,6 +52,10 @@ public class CandleStatus : MonoBehaviour
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         healthBar.SetHealth(_currentHealth);
+        if(_currentHealth == 0)
+        {
+            SceneManagerHelper.instance.ChangeScene("LossCandle");
+        }
     }
 
     public int GetCurrentHealth()

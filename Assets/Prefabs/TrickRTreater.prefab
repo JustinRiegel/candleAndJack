@@ -54,7 +54,7 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0
+  m_ShadowIntensity: 0.4
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 44
   m_PointLightOuterAngle: 76
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,8 +221,9 @@ GameObject:
   - component: {fileID: 8965893457416887353}
   - component: {fileID: 8965893457416887302}
   - component: {fileID: 8965893457416887352}
+  - component: {fileID: 874696039}
   m_Layer: 0
-  m_Name: AI
+  m_Name: NPC
   m_TagString: TrickRTreater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,8 +236,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8965893457416887303}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.44, y: 0.69, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5597137623936883870}
@@ -316,6 +317,8 @@ MonoBehaviour:
   - {fileID: 8965893458565607394}
   linearPath: 0
   canBeDistractedByLight: 1
+  dragMultiplier: 10
+  timeToAutoCanMove: -1
 --- !u!58 &8965893457416887352
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -332,6 +335,39 @@ CircleCollider2D:
   m_Offset: {x: 0.20172179, y: -0.6644974}
   serializedVersion: 2
   m_Radius: 0.4406706
+--- !u!114 &874696039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965893457416887303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
+  m_ShapePath:
+  - {x: -0.07451379, y: -1.1691146, z: 0}
+  - {x: 0.36833382, y: -1.1691146, z: 0}
+  - {x: 0.5618205, y: -0.6029291, z: 0}
+  - {x: 0.6423924, y: -0.22382689, z: 0}
+  - {x: 0.4065206, y: 0.07308245, z: 0}
+  - {x: 0.05937946, y: 0.14616442, z: 0}
+  - {x: -0.07764983, y: 0.0639472, z: 0}
+  - {x: -0.34857237, y: -0.05025673, z: 0}
+  - {x: -0.24208498, y: -0.26492357, z: 0}
+  - {x: -0.39738488, y: -0.42935848, z: 0}
+  - {x: -0.19640851, y: -0.54811764, z: 0}
+  m_ShapePathHash: -1442393057
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -74066
 --- !u!1 &8965893457586613206
 GameObject:
   m_ObjectHideFlags: 0

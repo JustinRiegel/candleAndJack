@@ -46,6 +46,10 @@ public class PlayerStatus : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBar.SetHealth(currentHealth);
+        if (currentHealth == 0)
+        {
+            SceneManagerHelper.instance.ChangeScene("LossJack");
+        }
     }
 
     public int GetCurrentHealth()

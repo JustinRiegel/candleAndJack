@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1553048427153915142}
   - component: {fileID: 1553048427153915143}
   - component: {fileID: 1553048427153915257}
+  - component: {fileID: 207659265}
   m_Layer: 0
   m_Name: deco_ghost
   m_TagString: Untagged
@@ -106,3 +107,41 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: 79145e3ee34eb714cafa5950a99f70af, type: 2}
   interactUIElement: {fileID: 6598947557706402435, guid: 9146879e6fc7ddc41873e152d22718bc, type: 3}
   interactUIOffset: {x: 0.5, y: -2.2}
+--- !u!114 &207659265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553048427153915141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
+  m_ShapePath:
+  - {x: -0.73, y: -1.1700001, z: 0}
+  - {x: -0.06199169, y: -1.5247918, z: 0}
+  - {x: 0.6965995, y: -1.1564933, z: 0}
+  - {x: 0.6549363, y: -0.7054448, z: 0}
+  - {x: 0.94357014, y: 0.5515077, z: 0}
+  - {x: 1.27, y: 0.8299999, z: 0}
+  - {x: 1.1204743, y: 1.2591255, z: 0}
+  - {x: 0.6270046, y: 1.2311933, z: 0}
+  - {x: 0.3849244, y: 1.6129344, z: 0}
+  - {x: -0.26830435, y: 1.6685851, z: 0}
+  - {x: -0.6951237, y: 1.1753287, z: 0}
+  - {x: -0.7137451, y: 0.542197, z: 0}
+  - {x: -1.0582433, y: 0.41184616, z: 0}
+  - {x: -1.0861754, y: 0.06734824, z: 0}
+  - {x: -0.73, y: -0.17000008, z: 0}
+  - {x: -0.6578803, y: -0.64958024, z: 0}
+  m_ShapePathHash: -512984283
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -72816

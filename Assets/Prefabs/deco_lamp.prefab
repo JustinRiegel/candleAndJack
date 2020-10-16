@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8860390154973575110}
   - component: {fileID: 8860390154973575105}
   - component: {fileID: 8860390154973575104}
+  - component: {fileID: 1271115486}
   m_Layer: 0
   m_Name: deco_lamp
   m_TagString: Untagged
@@ -106,3 +107,34 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: 79145e3ee34eb714cafa5950a99f70af, type: 2}
   interactUIElement: {fileID: 6598947557706402435, guid: 9146879e6fc7ddc41873e152d22718bc, type: 3}
   interactUIOffset: {x: 0, y: -2.5}
+--- !u!114 &1271115486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8860390154973575107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
+  m_ShapePath:
+  - {x: 0.019006878, y: -1.4834955, z: 0}
+  - {x: 0.2030749, y: -1.6585854, z: 0}
+  - {x: 0.48979476, y: -1.4993954, z: 0}
+  - {x: 0.4659448, y: 1.6186464, z: 0}
+  - {x: 0.23487511, y: 1.7440283, z: 0}
+  - {x: -0.7044457, y: 1.1893442, z: 0}
+  - {x: -0.8224791, y: 0.901325, z: 0}
+  - {x: -0.53999996, y: 0.8599999, z: 0}
+  - {x: 0.0758746, y: 1.2988265, z: 0}
+  m_ShapePathHash: -1395146343
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 30018

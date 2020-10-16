@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8753123319393372412}
   - component: {fileID: 1425257956}
   - component: {fileID: 1221945068}
+  - component: {fileID: 1978824575}
   m_Layer: 0
   m_Name: Jack
   m_TagString: Player
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753123319393372408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.871991, y: -1.9021878, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -155,3 +156,35 @@ MonoBehaviour:
   healthGainedPerInterval: 2
   damageTakenPerInteraval: 1
   healthChecksPerSecond: 20
+--- !u!114 &1978824575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753123319393372408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
+  m_ShapePath:
+  - {x: -0.3237114, y: -0.32883835, z: 0}
+  - {x: -0.076140404, y: -0.54270554, z: 0}
+  - {x: 0.2954607, y: -0.4557352, z: 0}
+  - {x: 0.39486933, y: -0.2576809, z: 0}
+  - {x: 0.58799744, y: -0.076227665, z: 0}
+  - {x: 0.56090355, y: 0.34465122, z: 0}
+  - {x: 0.27964783, y: 0.50093985, z: 0}
+  - {x: -0.30789852, y: 0.49487305, z: 0}
+  - {x: -0.574244, y: 0.27165413, z: 0}
+  - {x: -0.62168217, y: -0.107853174, z: 0}
+  m_ShapePathHash: 1173834421
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 30034
