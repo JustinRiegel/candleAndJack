@@ -8,18 +8,21 @@ public class CandleStatus : MonoBehaviour
     public HealthBar healthBar;
     public int _maxHealth = 3;
 
-    public int _healthGainedPerInterval = 1;
-    public int _damageTakenPerInteraval = 1;
+    [Header("Damage Settings")]
+    [Range(1, 10)]
+    public int _secondsPerDamageCheck = 3;
+    public int _damageTakenPerInterval = 1;
 
+    [Header("Healing Settings")]
+    public bool _canHeal = false;
+    public int _healthGainedPerInterval = 1;
     [Range(1, 10)]
     public int _secondsPerHealthCheck = 3;
 
-    private float _healthCheckTime;
     private int _currentHealth;
 
-    private GameObject _candle;
     private bool _isInLight = false;
-    //private Transform _candleTransform;
+    private PathfinderAI _candlePathfinderAI;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +36,15 @@ public class CandleStatus : MonoBehaviour
             healthBar.SetMaxHealth(_maxHealth);
         }
         _currentHealth = _maxHealth;
-        _candle = GameObject.FindWithTag("Candle");
+        _candlePathfinderAI = GameObject.FindWithTag("Candle").GetComponent<PathfinderAI>();
     }
 
     public void HealDamage(int healing)
     {
-        TakeDamage(-healing);
+        if (_canHeal)
+        {
+            TakeDamage(-healing);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -60,9 +66,9 @@ public class CandleStatus : MonoBehaviour
     {
         while (true)
         {
-            _candle.GetComponent<PathfinderAI>().SetCanMove(!_isInLight);
+            _candlePathfinderAI.SetCanMove(!_isInLight);
             CalculateLightDamage();
-            yield return new WaitForSeconds(_secondsPerHealthCheck);
+            yield return new WaitForSeconds(_secondsPerDamageCheck);
         }
     }
 
@@ -70,7 +76,7 @@ public class CandleStatus : MonoBehaviour
     {
         while (true)
         {
-            _candle.GetComponent<PathfinderAI>().SetCanMove(!_isInLight);
+            _candlePathfinderAI.SetCanMove(!_isInLight);
             yield return new WaitForSeconds(_secondsPerHealthCheck);
             CalculateLightDamage();
         }
@@ -96,11 +102,11 @@ public class CandleStatus : MonoBehaviour
     {
         if(_isInLight)
         {
-            TakeDamage(_damageTakenPerInteraval);
+            TakeDamage(_damageTakenPerInterval);
         }
         else
         {
-            HealDamage(_damageTakenPerInteraval);
+            HealDamage(_healthGainedPerInterval);
         }
     }
 }
