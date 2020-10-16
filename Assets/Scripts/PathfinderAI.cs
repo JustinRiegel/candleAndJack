@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
-using System.Security.Cryptography;
-using System.Linq;
-using UnityEditor.Experimental.Rendering;
-using System;
-using System.Linq.Expressions;
 
 public class PathfinderAI : MonoBehaviour
 {

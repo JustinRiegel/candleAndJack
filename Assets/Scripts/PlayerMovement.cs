@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Threading;
-using UnityEngine;
+﻿using UnityEngine;
 
 //Requires that the gameobject this compontent is on also has a Rigidbody2D
 [RequireComponent(typeof(Rigidbody2D))]

@@ -1,5 +1,4 @@
-﻿using UnityEngine.Audio;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
@@ -99,7 +98,8 @@ public class AudioManager : MonoBehaviour
                 StopSound("GameMusic");
                 PlaySound("WinMusic");
                 break;
-            case 3: //Lose Scene
+            case 3: //Lose Scene (candle)
+            case 4: //Lose Scene (jack) [intentional fallthrough]
                 StopSound("GameMusic");
                 PlaySound("LoseMusic");
                 break;
