@@ -156,6 +156,13 @@ MonoBehaviour:
   healthGainedPerInterval: 2
   damageTakenPerInteraval: 1
   healthChecksPerSecond: 20
+  lowHealthPercent: 70
+  criticalHealthPercent: 50
+  lowHealthPitch: 0.9
+  critcalHealthPitch: 0.8
+  lowHealthMusicVolume: 0.5
+  critcalHealthMusicVolume: 0.3
+  canLoseByJack: 1
 --- !u!114 &1978824575
 MonoBehaviour:
   m_ObjectHideFlags: 0

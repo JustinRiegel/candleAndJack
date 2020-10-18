@@ -2951,26 +2951,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4794557932632338656, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4794557932632338656, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
-      propertyPath: sounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1f6e776c2f553f446b2c6dc576a939a5, type: 3}
-    - target: {fileID: 4794557932632338656, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
-      propertyPath: sounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0dbe168c748587245b6196db12331845, type: 3}
-    - target: {fileID: 4794557932632338656, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
-      propertyPath: sounds.Array.data[1].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4794557932632338656, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
-      propertyPath: sounds.Array.data[0].loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4794557932632338657, guid: 38242e5c801d6bb4eb1f42d38d47f8c8, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -3210,14 +3190,6 @@ PrefabInstance:
     - target: {fileID: 1221945068, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
       propertyPath: canLoseByJack
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1221945068, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
-      propertyPath: critcalHealthMusicVolume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1221945068, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
-      propertyPath: lowHealthMusicVolume
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1978824575, guid: 5be1169101818bf4b8be7c1a245bb34d, type: 3}
       propertyPath: m_Mesh
