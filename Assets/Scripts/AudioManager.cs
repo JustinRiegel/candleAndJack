@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -52,6 +53,60 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    public void ChangePitch (string name, float newPitch)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + "pitch shifted but not found!");
+            return;
+        }
+
+        if (s.source.pitch != newPitch)
+        {
+            newPitch = Mathf.Clamp(newPitch, 0, 1);
+            StartCoroutine(ChangePitchOvertime(s, s.source.pitch, newPitch, 1));
+        }
+    }
+
+    IEnumerator ChangePitchOvertime(Sound s, float oldValue, float newValue, float duration)
+    {
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            s.source.pitch = Mathf.Lerp(oldValue, newValue, t / duration);
+            yield return null;
+        }
+        s.source.pitch = newValue;
+    }
+
+    public void ChangeVolume(string name, float newVolume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + "volume shifted but not found!");
+            return;
+        }
+
+        newVolume *= s.volume;
+        newVolume = Mathf.Clamp(newVolume, 0, 1);
+
+        if (s.source.volume != newVolume)
+        {
+            StartCoroutine(ChangeVolumeOvertime(s, s.source.volume, newVolume, 1));
+        }
+    }
+
+    IEnumerator ChangeVolumeOvertime(Sound s, float oldValue, float newValue, float duration)
+    {
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            s.source.volume = Mathf.Lerp(oldValue, newValue, t / duration);
+            yield return null;
+        }
+        s.source.volume = newValue;
+    }
+
     public void StopSound (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -84,26 +139,25 @@ public class AudioManager : MonoBehaviour
 
     private void LoadLevelMusic (int current, int next)
     {
+        StopAllSounds();
         switch (next)
         {
             case 0: //Start Scene
-                StopAllSounds();
                 PlaySound("StartMusic");
                 break;
             case 1: //Game Scene
-                StopAllSounds();
                 PlaySound("GameMusic");
                 break;
             case 2: //Win Scene
-                StopSound("GameMusic");
                 PlaySound("WinMusic");
                 break;
             case 3: //Lose Scene (candle)
             case 4: //Lose Scene (jack) [intentional fallthrough]
-                StopSound("GameMusic");
                 PlaySound("LoseMusic");
                 break;
-            default:
+            default: //this is probably a test scene, play game music and play a debug message
+                Debug.LogWarning("This scene has no music set, playing default music of GameMusic!");
+                PlaySound("GameMusic");
                 break;
         }
     }

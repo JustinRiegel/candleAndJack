@@ -18,6 +18,8 @@ public class CandleStatus : MonoBehaviour
     [Range(1, 10)]
     public int _secondsPerHealthCheck = 3;
 
+    public bool canLoseByCandle = true;
+
     private int _currentHealth;
 
     private bool _isInLight = false;
@@ -53,7 +55,10 @@ public class CandleStatus : MonoBehaviour
         healthBar.SetHealth(_currentHealth);
         if(_currentHealth == 0)
         {
-            SceneManagerHelper.instance.ChangeScene("LossCandle");
+            if (canLoseByCandle)
+            {
+                SceneManagerHelper.instance.ChangeScene("LossCandle");
+            }
         }
     }
 

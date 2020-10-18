@@ -16,6 +16,23 @@ public class PlayerStatus : MonoBehaviour
     [Range(0.25f, 60f)]
     public float healthChecksPerSecond = 10f;
 
+    [Range(0f, 100f)]
+    public float lowHealthPercent = 70f;
+    [Range(0f, 100f)]
+    public float criticalHealthPercent = 50f;
+
+    [Range(0.01f, 1f)]
+    public float lowHealthPitch = 0.9f;
+    [Range(0.01f, 1f)]
+    public float critcalHealthPitch = 0.8f;
+
+    [Range(0.01f, 1f)]
+    public float lowHealthMusicVolume = 0.8f;
+    [Range(0.01f, 1f)]
+    public float critcalHealthMusicVolume = 0.6f;
+
+    public bool canLoseByJack = true;
+
     private float healthCheckTime;
     private int currentHealth;
 
@@ -47,8 +64,12 @@ public class PlayerStatus : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (currentHealth == 0)
         {
-            SceneManagerHelper.instance.ChangeScene("LossJack");
+            if (canLoseByJack)
+            {
+                SceneManagerHelper.instance.ChangeScene("LossJack");
+            }
         }
+        Heartbeat();
     }
 
     public int GetCurrentHealth()
@@ -62,6 +83,43 @@ public class PlayerStatus : MonoBehaviour
         {
             yield return new WaitForSeconds(healthCheckTime);
             CandleDamage();
+        }
+    }
+
+    private void Heartbeat()
+    {
+
+        float currentPercentHealth = ((float)currentHealth / maxHealth);
+
+        //if we have no health we are actively changing scenes so we should stop the sounds
+        if (currentHealth == 0)
+        {
+            AudioManager.instance.StopSound("HeartbeatFast");
+            AudioManager.instance.StopSound("HeartbeatSlow");
+        }
+        //critical health
+        else if (currentPercentHealth < (criticalHealthPercent / 100f))
+        {
+            AudioManager.instance.StopSound("HeartbeatSlow");
+            AudioManager.instance.PlaySound("HeartbeatFast");
+            AudioManager.instance.ChangePitch("GameMusic", critcalHealthPitch);
+            AudioManager.instance.ChangeVolume("GameMusic", critcalHealthMusicVolume);
+        }
+        //bad health
+        else if (currentPercentHealth < (lowHealthPercent / 100f))
+        {
+            AudioManager.instance.StopSound("HeartbeatFast");
+            AudioManager.instance.PlaySound("HeartbeatSlow");
+            AudioManager.instance.ChangePitch("GameMusic", lowHealthPitch);
+            AudioManager.instance.ChangeVolume("GameMusic", lowHealthMusicVolume);
+        }
+        //vibing
+        else
+        {
+            AudioManager.instance.StopSound("HeartbeatFast");
+            AudioManager.instance.StopSound("HeartbeatSlow");
+            AudioManager.instance.ChangePitch("GameMusic", 1f);
+            AudioManager.instance.ChangeVolume("GameMusic", 1f);
         }
     }
 
