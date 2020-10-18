@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
-using System.Security.Cryptography;
-using System.Linq;
-using UnityEditor.Experimental.Rendering;
-using System;
-using System.Linq.Expressions;
 
 public class PathfinderAI : MonoBehaviour
 {
@@ -201,6 +194,11 @@ public class PathfinderAI : MonoBehaviour
             target = newTarget.transform;
         }
         DeterminePath();
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
     }
 
     public void SetCanMove(bool newCanMove)

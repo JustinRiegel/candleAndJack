@@ -44,14 +44,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: HeartbeatSlow
+    clip: {fileID: 8300000, guid: 1f6e776c2f553f446b2c6dc576a939a5, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: HeartbeatFast
+    clip: {fileID: 8300000, guid: 0dbe168c748587245b6196db12331845, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: GameMusic
-    clip: {fileID: 8300000, guid: 31a26f3ed3779b541898ba094ff8792f, type: 3}
-    volume: 1
-    pitch: 0.6
+    clip: {fileID: 8300000, guid: ae8e0322a586f8348a19839746d09f81, type: 3}
+    volume: 0.25
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: StartMusic
-    clip: {fileID: 8300000, guid: 31a26f3ed3779b541898ba094ff8792f, type: 3}
+    clip: {fileID: 0}
     volume: 1
     pitch: 1
     loop: 1
@@ -59,12 +71,12 @@ MonoBehaviour:
   - name: WinMusic
     clip: {fileID: 8300000, guid: 31a26f3ed3779b541898ba094ff8792f, type: 3}
     volume: 1
-    pitch: 1.42
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: LoseMusic
     clip: {fileID: 8300000, guid: 31a26f3ed3779b541898ba094ff8792f, type: 3}
     volume: 1
-    pitch: 0.26
+    pitch: 1
     loop: 1
     source: {fileID: 0}
