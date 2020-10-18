@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  QAbility: {fileID: 4276066463896279686, guid: 89522a52b3ef8d04ead01ec8c7d7ca79, type: 3}
 --- !u!50 &8753123319393372412
 Rigidbody2D:
   serializedVersion: 4
