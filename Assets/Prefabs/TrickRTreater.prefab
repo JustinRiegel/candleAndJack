@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point Light 2D
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2326519349893577666}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.5999999, y: -0.9, z: 0}
+  m_LocalPosition: {x: 0.09, y: 0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8965893457416887354}
@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 8965893457314479030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 8965893457416887354}
   m_RootOrder: 1
@@ -178,9 +178,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a587e1c913636f4c812f857e5aa6c84, type: 3}
+  m_Sprite: {fileID: 925359753979782820, guid: cbeb63bfb7aca7f44b036727f2495364, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 2.56}
@@ -199,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 8965893457314479030}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a739a1dde30c7f4faa00fba8745025d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3bd0751e735327b4db62cb3c3aceeb61, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -354,20 +354,21 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
   m_ShapePath:
-  - {x: -0.07451379, y: -1.1691146, z: 0}
-  - {x: 0.36833382, y: -1.1691146, z: 0}
-  - {x: 0.5618205, y: -0.6029291, z: 0}
-  - {x: 0.6423924, y: -0.22382689, z: 0}
-  - {x: 0.4065206, y: 0.07308245, z: 0}
-  - {x: 0.05937946, y: 0.14616442, z: 0}
-  - {x: -0.07764983, y: 0.0639472, z: 0}
+  - {x: 0.08045304, y: -0.5664655, z: 0}
+  - {x: 0.37407333, y: -0.52628887, z: 0}
+  - {x: 0.45021608, y: -0.1839965, z: 0}
+  - {x: 0.3491255, y: 0.4805881, z: 0}
+  - {x: 0.08288738, y: 0.5277034, z: 0}
+  - {x: 0.04845026, y: 0.71136785, z: 0}
+  - {x: 0.2091566, y: 0.72858644, z: 0}
+  - {x: -0.032452703, y: 0.8693433, z: 0}
+  - {x: -0.3072306, y: 0.6436383, z: 0}
   - {x: -0.34857237, y: -0.05025673, z: 0}
-  - {x: -0.24208498, y: -0.26492357, z: 0}
   - {x: -0.39738488, y: -0.42935848, z: 0}
   - {x: -0.19640851, y: -0.54811764, z: 0}
-  m_ShapePathHash: -1442393057
+  m_ShapePathHash: -662392874
   m_Mesh: {fileID: 0}
-  m_InstanceId: -74066
+  m_InstanceId: -49128
 --- !u!1 &8965893457586613206
 GameObject:
   m_ObjectHideFlags: 0
