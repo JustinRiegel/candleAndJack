@@ -26,7 +26,7 @@ public class CandleStatus : MonoBehaviour
     private PathfinderAI _candlePathfinderAI;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         if (healthBar == null)
         {
@@ -40,7 +40,23 @@ public class CandleStatus : MonoBehaviour
         _candlePathfinderAI = GameObject.FindWithTag("Candle").GetComponent<PathfinderAI>();
     }
 
-    public void HealDamage(int healing)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("light"))
+        {
+            SetInLightStatus(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("light"))
+        {
+            SetInLightStatus(false);
+        }
+    }
+
+    private void HealDamage(int healing)
     {
         if (_canHeal)
         {
@@ -48,7 +64,7 @@ public class CandleStatus : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
@@ -70,7 +86,7 @@ public class CandleStatus : MonoBehaviour
     //the difference in these 2 loops is that i wanted the damage to kick in immediately upon entering light
     //and for the healing to take some time to kick in after leaving the light
     //both need to affect the movement immediately and in every loop (to prevent the auto-start-move from kicking in)
-    IEnumerator DamageLoop()
+    private IEnumerator DamageLoop()
     {
         while (true)
         {
@@ -80,7 +96,7 @@ public class CandleStatus : MonoBehaviour
         }
     }
 
-    IEnumerator HealLoop()
+    private IEnumerator HealLoop()
     {
         while (true)
         {
@@ -90,7 +106,7 @@ public class CandleStatus : MonoBehaviour
         }
     }
 
-    public void SetInLightStatus(bool inLightStatus)
+    private void SetInLightStatus(bool inLightStatus)
     {
         _isInLight = inLightStatus;
 
@@ -106,7 +122,7 @@ public class CandleStatus : MonoBehaviour
         }
     }
 
-    public void CalculateLightDamage()
+    private void CalculateLightDamage()
     {
         if(_isInLight)
         {

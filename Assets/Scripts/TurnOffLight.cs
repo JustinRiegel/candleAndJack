@@ -4,12 +4,10 @@ public class TurnOffLight : MonoBehaviour
 {
     private bool isJackInLight = false;
     private DecoLight decoLight;
-    private CandleStatus _candleStatus;
 
     private void Start()
     {
         decoLight = transform.parent.gameObject.GetComponent<DecoLight>();
-        _candleStatus = GameObject.FindWithTag("Candle").GetComponent<CandleStatus>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,12 +17,6 @@ public class TurnOffLight : MonoBehaviour
             isJackInLight = true;
             NotifyJackInLight();
         }
-
-        //something here could be what damages poor little candle
-        if (collision.CompareTag("Candle"))
-        {
-            NotifyCandleLightUpdate(true);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,11 +25,6 @@ public class TurnOffLight : MonoBehaviour
         {
             isJackInLight = false;
             NotifyJackInLight();
-        }
-
-        if (collision.CompareTag("Candle"))
-        {
-            NotifyCandleLightUpdate(false);
         }
     }
 
@@ -52,10 +39,5 @@ public class TurnOffLight : MonoBehaviour
     private void NotifyJackInLight()
     {
         decoLight.SetJackInLight(isJackInLight);
-    }
-
-    private void NotifyCandleLightUpdate(bool candleInLight)
-    {
-        _candleStatus.SetInLightStatus(candleInLight);
     }
 }
