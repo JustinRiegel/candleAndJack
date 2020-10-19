@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     public AbilityCooldownManager QAbility;
+    public AbilityCooldownManager EAbility;
 
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -19,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
         if (QAbility == null)
         {
             Debug.LogWarning("Jack does not have any ability set for Q");
+        }
+
+        if (EAbility == null)
+        {
+            Debug.LogWarning("Jack does not have any ability set for E");
         }
     }
 
@@ -34,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
             QAbility.UseAbility("stopCandle");
         }
 
+        if (EAbility != null && Input.GetKeyDown(KeyCode.E))
+        {
+            EAbility.UseAbility("disableLight");
+        }
     }
 
     void FixedUpdate()

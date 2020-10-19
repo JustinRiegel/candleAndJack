@@ -37,6 +37,9 @@ public class PlayerStatus : MonoBehaviour
     private int currentHealth;
 
     private Transform candle;
+    private bool _isNearLight;
+    private DecoLight _nearbyLight;
+    private PlayerMovement _playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +51,53 @@ public class PlayerStatus : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         candle = GameObject.FindWithTag("Candle").transform;
+        _playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         healthCheckTime = 1 / healthChecksPerSecond;
         StartCoroutine("CheckHealth");
+    }
+
+    private void Update()
+    {
+        if(_isNearLight && _nearbyLight != null)
+        {
+            _nearbyLight.SetDisableAbilityIsReady(_playerMovement.EAbility.GetCanUseAbility());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("light"))
+        {
+            _isNearLight = true;
+            _nearbyLight = collision.transform.parent.gameObject.GetComponent<DecoLight>();
+            _nearbyLight.SetJackInLight(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("light"))
+        {
+            _isNearLight = false;
+            if (_nearbyLight != null)
+            {
+                _nearbyLight.SetJackInLight(false);//important to call this BEFORE we null it out
+            }
+            _nearbyLight = null;
+        }
+    }
+
+    public bool IsPlayerNearLight()
+    {
+        return _isNearLight;
+    }
+
+    public void DisableLight()
+    {
+        if(_isNearLight && _nearbyLight != null)
+        {
+            _nearbyLight.TurnOffLight();
+        }
     }
 
     public void HealDamage(int healing)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8812992654241644952}
   m_Layer: 0
   m_Name: Point Light 2D
-  m_TagString: light
+  m_TagString: TrickOrTreaterLight
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   - {x: -0.59545505, y: -0.11422288, z: 0}
   m_ShapePathHash: 254115928
   m_Mesh: {fileID: 0}
-  m_InstanceId: 28938
+  m_InstanceId: 113294
 --- !u!1 &8965893457586613206
 GameObject:
   m_ObjectHideFlags: 0

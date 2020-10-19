@@ -9,6 +9,7 @@ TagManager:
   - attractor
   - TrickRTreater
   - helperUI
+  - TrickOrTreaterLight
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class DecoLight : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class DecoLight : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     private bool lightOn = false;
+    private bool _isJackInLight = false;
+    private bool _disableAbilityIsReady = true;
     private Vector3 threeDLightOffset;
     private Vector3 threeDAttractorOffset;
     private Vector3 threeDUIOffset;
     private LightManager lightManager;
+    private GameObject _helperText;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +60,29 @@ public class DecoLight : MonoBehaviour
             threeDUIOffset = new Vector3(interactUIOffset.x, interactUIOffset.y, 0);
         }
 
+        _helperText = Instantiate(interactUIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
+        _helperText.SetActive(false);
+
         TurnOnLight();
+    }
+
+    public void Update()
+    {
+        //put stuff here to display the helper text is jack is near and disable ability is ready
+        if (lightOn && _isJackInLight)
+        {
+            spriteRenderer.material = outlineMaterial;
+            if(_disableAbilityIsReady)
+            {
+                _helperText.SetActive(true);
+            }
+            
+        }
+        else
+        {
+            spriteRenderer.material = defaultMaterial;
+            _helperText.SetActive(false);
+        }
     }
 
     public void TurnOffLight()
@@ -110,21 +136,11 @@ public class DecoLight : MonoBehaviour
 
     public void SetJackInLight(bool isJackInLight)
     {
-        if(lightOn && isJackInLight)
-        {
-            spriteRenderer.material = outlineMaterial;
-            Instantiate(interactUIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
-        }
-        else
-        {
-            spriteRenderer.material = defaultMaterial;
-            foreach (Transform child in transform)
-            {
-                if (child.CompareTag("helperUI"))
-                {
-                    GameObject.Destroy(child.gameObject);
-                }
-            }
-        }
-    }    
+        _isJackInLight = isJackInLight;
+    }
+
+    public void SetDisableAbilityIsReady(bool disableReady)
+    {
+        _disableAbilityIsReady = disableReady;
+    }
 }

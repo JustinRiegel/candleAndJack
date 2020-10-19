@@ -14,11 +14,13 @@ public class AbilityCooldownManager : MonoBehaviour
     bool canUseAbility = true;
 
     private PathfinderAI candlePathfinder;
+    private PlayerStatus _playerStatus;
 
     public void Start()
     {
         sliderFill.color = endColor;
         candlePathfinder = GameObject.FindWithTag("Candle").GetComponent<PathfinderAI>();
+        _playerStatus = GameObject.FindWithTag("Player").GetComponent<PlayerStatus>();
     }
 
     public void StartRecharge()
@@ -40,17 +42,27 @@ public class AbilityCooldownManager : MonoBehaviour
     {
         if (canUseAbility)
         {
-            StartRecharge();
-            StartCoroutine(ShowCooldownAnimation());
             if (abilityName == "stopCandle")
             {
+                StartRecharge();
+                StartCoroutine(ShowCooldownAnimation());
                 candlePathfinder.SetCanMove(false);
             }
             if (abilityName == "disableLight")
             {
-                //somehow disable the light?
+                if (_playerStatus.IsPlayerNearLight())
+                {
+                    StartRecharge();
+                    StartCoroutine(ShowCooldownAnimation());
+                    _playerStatus.DisableLight();
+                }
             }
         }
+    }
+
+    public bool GetCanUseAbility()
+    {
+        return canUseAbility;
     }
 
     IEnumerator ShowCooldownAnimation()
@@ -58,7 +70,7 @@ public class AbilityCooldownManager : MonoBehaviour
         for (float t = 0f; t < rechargeTime; t += Time.deltaTime)
         {
             sliderFill.fillAmount = (rechargeEnd - Time.time) / rechargeTime;
-            Debug.Log("fillAmount is " + sliderFill.fillAmount);
+            //Debug.Log("fillAmount is " + sliderFill.fillAmount);
             sliderFill.color = Color.Lerp(startColor, endColor, t / rechargeTime);
             yield return null;
         }

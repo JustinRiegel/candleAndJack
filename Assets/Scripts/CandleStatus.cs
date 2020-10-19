@@ -42,7 +42,7 @@ public class CandleStatus : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("light"))
+        if (collision.CompareTag("light") || collision.CompareTag("TrickOrTreaterLight"))
         {
             SetInLightStatus(true);
         }
@@ -50,7 +50,7 @@ public class CandleStatus : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("light"))
+        if (collision.CompareTag("light") || collision.CompareTag("TrickOrTreaterLight"))
         {
             SetInLightStatus(false);
         }
