@@ -23,6 +23,8 @@ public class CandleStatus : MonoBehaviour
     private int _currentHealth;
 
     private bool _isInLight = false;
+    private bool _isInStationaryLight = false;
+    private bool _isInTrickOrTreaterLight = false;
     private PathfinderAI _candlePathfinderAI;
 
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class CandleStatus : MonoBehaviour
     {
         if (healthBar == null)
         {
-            Debug.LogError("Candle needs a slider with the healhbar component assigned!");
+            Debug.LogError("Candle needs a slider with the healhbar component assigned!"); 
         }
         else
         {
@@ -42,7 +44,16 @@ public class CandleStatus : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("light") || collision.CompareTag("TrickOrTreaterLight"))
+        if (collision.CompareTag("light"))
+        {
+            _isInStationaryLight = true;
+        }
+        else if(collision.CompareTag("TrickOrTreaterLight"))
+        {
+            _isInTrickOrTreaterLight = true;
+        }
+
+        if (_isInStationaryLight || _isInTrickOrTreaterLight)
         {
             SetInLightStatus(true);
         }
@@ -50,8 +61,18 @@ public class CandleStatus : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("light") || collision.CompareTag("TrickOrTreaterLight"))
+        if (collision.CompareTag("light"))
         {
+            _isInStationaryLight = false;
+        }
+        else if (collision.CompareTag("TrickOrTreaterLight"))
+        {
+            _isInTrickOrTreaterLight = false;
+        }
+
+        if (!_isInStationaryLight && !_isInTrickOrTreaterLight)
+        {
+            
             SetInLightStatus(false);
         }
     }
