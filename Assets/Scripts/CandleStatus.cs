@@ -8,15 +8,11 @@ public class CandleStatus : MonoBehaviour
     public int _maxHealth = 3;
 
     [Header("Damage Settings")]
-    [Range(1, 10)]
-    public int _secondsPerDamageCheck = 3;
     public int _damageTakenPerInterval = 1;
 
     [Header("Healing Settings")]
     public bool _canHeal = false;
     public int _healthGainedPerInterval = 1;
-    [Range(1, 10)]
-    public int _secondsPerHealthCheck = 3;
 
     public bool canLoseByCandle = true;
 
@@ -56,6 +52,7 @@ public class CandleStatus : MonoBehaviour
         if (_isInStationaryLight || _isInTrickOrTreaterLight)
         {
             SetInLightStatus(true);
+            CalculateLightDamage();
         }
     }
 
@@ -104,54 +101,26 @@ public class CandleStatus : MonoBehaviour
         return _currentHealth;
     }
 
-    //the difference in these 2 loops is that i wanted the damage to kick in immediately upon entering light
-    //and for the healing to take some time to kick in after leaving the light
-    //both need to affect the movement immediately and in every loop (to prevent the auto-start-move from kicking in)
-    private IEnumerator DamageLoop()
-    {
-        while (true)
-        {
-            _candlePathfinderAI.SetCanMove(!_isInLight);
-            CalculateLightDamage();
-            yield return new WaitForSeconds(_secondsPerDamageCheck);
-        }
-    }
-
-    private IEnumerator HealLoop()
-    {
-        while (true)
-        {
-            _candlePathfinderAI.SetCanMove(!_isInLight);
-            yield return new WaitForSeconds(_secondsPerHealthCheck);
-            CalculateLightDamage();
-        }
-    }
-
     private void SetInLightStatus(bool inLightStatus)
     {
         _isInLight = inLightStatus;
-
-        if (_isInLight)
-        {
-            StopCoroutine("HealLoop");
-            StartCoroutine("DamageLoop");
-        }
-        else
-        {
-            StopCoroutine("DamageLoop");
-            StartCoroutine("HealLoop");
-        }
     }
 
-    private void CalculateLightDamage()
+    public void CalculateLightDamage()
     {
         if(_isInLight)
         {
+            _candlePathfinderAI.SetCanMove(!_isInLight);
             TakeDamage(_damageTakenPerInterval);
         }
         else
         {
             HealDamage(_healthGainedPerInterval);
         }
+    }
+
+    public bool GetIsInLight()
+    {
+        return _isInLight;
     }
 }

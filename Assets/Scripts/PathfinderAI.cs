@@ -7,6 +7,7 @@ public class PathfinderAI : MonoBehaviour
     //this will need to be updated with the distractions to be drawn to
     [SerializeField] Transform target;
     [SerializeField] float speed = 100f;
+    [Range(0.25f, 3f)]
     [SerializeField] float nextWaypointDistance = 1.5f;
     [SerializeField] float drawDistance = 5f;
     [SerializeField] GameObject[] basePath;
@@ -26,12 +27,17 @@ public class PathfinderAI : MonoBehaviour
 
     private Seeker seeker;
     private Rigidbody2D rb;
+    private CandleStatus candleStatus;
+    private bool isCandle;
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(this.name + " nextWaypointDistance: " + nextWaypointDistance);
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        candleStatus = GetComponent<CandleStatus>();
+        isCandle = candleStatus != null;
 
         if (target == null)
         {
@@ -41,12 +47,12 @@ public class PathfinderAI : MonoBehaviour
         if (basePath == null || basePath.Length == 0)
         {
             //if the base path is empty set it to itself
-            basePath = new GameObject[] {gameObject};
+            basePath = new GameObject[] { gameObject };
         }
 
         defaultDrag = rb.drag;
 
-            InvokeRepeating("DeterminePath", 0f, 0.5f);
+        InvokeRepeating("DeterminePath", 0f, 0.5f);
     }
 
     void DeterminePath()
@@ -69,6 +75,7 @@ public class PathfinderAI : MonoBehaviour
 
             //if we don't have a target or aren't near it go to the base path
             seeker.StartPath(rb.position, basePath[currentDefaultPathPoint].transform.position, OnPathComplete);
+            currentWaypoint = 0;
             onDefaultPath = true;
         }
     }
@@ -86,13 +93,18 @@ public class PathfinderAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        //if we don't have a path return immediately
         if (path == null)
         {
+
             return;
         }
 
+        //if we can't move return immediately as well
         if (!canMove)
         {
+
             return;
         }
 
@@ -100,8 +112,13 @@ public class PathfinderAI : MonoBehaviour
         {
             if (onDefaultPath)
             {
-                currentDefaultPathPoint = DetermineNextDefaultPathPoint();
-                DeterminePath();
+                var distanceToTarget = Vector2.Distance(rb.position, basePath[currentDefaultPathPoint].transform.position);
+
+                if (distanceToTarget < nextWaypointDistance)
+                {
+                    currentDefaultPathPoint = DetermineNextDefaultPathPoint();
+                    DeterminePath();
+                }
             }
             return;
         }
@@ -133,27 +150,34 @@ public class PathfinderAI : MonoBehaviour
     {
         int retVal;
 
+        //for linear paths we travel to the end of the path point by point and then travel back by reversing those points
         if (linearPath)
         {
+            //this is true if we have reached the end of the path and are now traveling back
             if (isLinearPathReversed)
             {
+                //this happens if we are at the start of the path again
                 if (currentDefaultPathPoint <= 0)
                 {
                     retVal = 1;
                     isLinearPathReversed = false;
                 }
+                //otherwise we just want to reduce by one
                 else
                 {
                     retVal = currentDefaultPathPoint - 1;
                 }
             }
+            //this is for linear paths that are not currently reversed
             else
             {
-                if (currentDefaultPathPoint >= basePath.Length - 1)
+                //if we are at the end of the path we want to reverse it and start going backwards
+                if (currentDefaultPathPoint > basePath.Length)
                 {
                     isLinearPathReversed = true;
                     retVal = basePath.Length - 1;
                 }
+                //otherwise we just want to increment by 1
                 else
                 {
                     retVal = currentDefaultPathPoint + 1;
@@ -163,23 +187,30 @@ public class PathfinderAI : MonoBehaviour
         else
         //for cycling paths
         {
-            if (currentDefaultPathPoint >= basePath.Length - 1)
+            //if we are at the end of the path we want to go back to the first path point
+            if (currentDefaultPathPoint >= basePath.Length)
             {
                 retVal = 0;
             }
+            //otherwise we just want to increment by 1
             else
             {
                 retVal = currentDefaultPathPoint + 1;
             }
         }
-        retVal = Mathf.Clamp(retVal, 0, basePath.Length - 1);
+        if (retVal < 0 || retVal > basePath.Length)
+        {
+            Debug.Log(this.name + " has an invalid Default path point, clamping" + retVal);
+            retVal = Mathf.Clamp(retVal, 0, basePath.Length - 1);
+        }
+
         return retVal;
     }
 
     public bool GetCanBeDistractedByAttractor()
-        {
+    {
         return canBeDistractedByLight;
-        }
+    }
 
     public void SetNewTarget(GameObject newTarget)
     {
@@ -216,8 +247,17 @@ public class PathfinderAI : MonoBehaviour
 
     private void AutoCanMove()
     {
+        if (isCandle)
+        {
+            if (candleStatus.GetIsInLight())
+            {
+                candleStatus.CalculateLightDamage();
+                Invoke("AutoCanMove", timeToAutoCanMove);
+                return;
+            }
+        }
         SetCanMove(true);
-    }    
+    }
 
     public bool GetCanMove()
     {
