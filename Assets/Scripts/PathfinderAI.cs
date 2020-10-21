@@ -13,7 +13,6 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] GameObject[] basePath;
     [SerializeField] bool linearPath = false;
     [SerializeField] bool canBeDistractedByLight = true;
-    [SerializeField] float dragMultiplier = 10;
     [SerializeField] float timeToAutoCanMove = -1;
 
     private bool hasTarget = true;
@@ -22,13 +21,9 @@ public class PathfinderAI : MonoBehaviour
     private Path path;
     private int currentWaypoint = 0;
     private bool isLinearPathReversed = false;
-    private bool canMove = true;
-    private float defaultDrag = 1;
 
     private Seeker seeker;
     private Rigidbody2D rb;
-    private CandleStatus candleStatus;
-    private bool isCandle;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +31,6 @@ public class PathfinderAI : MonoBehaviour
         Debug.Log(this.name + " nextWaypointDistance: " + nextWaypointDistance);
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        candleStatus = GetComponent<CandleStatus>();
-        isCandle = candleStatus != null;
 
         if (target == null)
         {
@@ -49,8 +42,6 @@ public class PathfinderAI : MonoBehaviour
             //if the base path is empty set it to itself
             basePath = new GameObject[] { gameObject };
         }
-
-        defaultDrag = rb.drag;
 
         InvokeRepeating("DeterminePath", 0f, 0.5f);
     }
@@ -101,13 +92,6 @@ public class PathfinderAI : MonoBehaviour
             return;
         }
 
-        //if we can't move return immediately as well
-        if (!canMove)
-        {
-
-            return;
-        }
-
         if (currentWaypoint >= path.vectorPath.Count)
         {
             if (onDefaultPath)
@@ -116,7 +100,7 @@ public class PathfinderAI : MonoBehaviour
 
                 if (distanceToTarget < nextWaypointDistance)
                 {
-                    currentDefaultPathPoint = DetermineNextDefaultPathPoint();
+                    DetermineNextDefaultPathPoint();
                     DeterminePath();
                 }
             }
@@ -146,9 +130,8 @@ public class PathfinderAI : MonoBehaviour
 
     }
 
-    int DetermineNextDefaultPathPoint()
+    private void  DetermineNextDefaultPathPoint()
     {
-        int retVal;
 
         //for linear paths we travel to the end of the path point by point and then travel back by reversing those points
         if (linearPath)
@@ -156,55 +139,43 @@ public class PathfinderAI : MonoBehaviour
             //this is true if we have reached the end of the path and are now traveling back
             if (isLinearPathReversed)
             {
-                //this happens if we are at the start of the path again
-                if (currentDefaultPathPoint <= 0)
+                //reduce by 1
+                currentDefaultPathPoint--;
+                //if we are now below one we are at the start of the path again
+                if (currentDefaultPathPoint < 0)
                 {
-                    retVal = 1;
+                    currentDefaultPathPoint = 1;
                     isLinearPathReversed = false;
-                }
-                //otherwise we just want to reduce by one
-                else
-                {
-                    retVal = currentDefaultPathPoint - 1;
                 }
             }
             //this is for linear paths that are not currently reversed
             else
             {
+                currentDefaultPathPoint++;
                 //if we are at the end of the path we want to reverse it and start going backwards
-                if (currentDefaultPathPoint > basePath.Length)
+                if (currentDefaultPathPoint >= basePath.Length)
                 {
                     isLinearPathReversed = true;
-                    retVal = basePath.Length - 1;
+                    currentDefaultPathPoint = basePath.Length - 1;
                 }
                 //otherwise we just want to increment by 1
-                else
-                {
-                    retVal = currentDefaultPathPoint + 1;
-                }
             }
         }
         else
-        //for cycling paths
+        //for cycling paths increment by 1
         {
+            currentDefaultPathPoint++;
             //if we are at the end of the path we want to go back to the first path point
             if (currentDefaultPathPoint >= basePath.Length)
             {
-                retVal = 0;
-            }
-            //otherwise we just want to increment by 1
-            else
-            {
-                retVal = currentDefaultPathPoint + 1;
+                currentDefaultPathPoint = 0;
             }
         }
-        if (retVal < 0 || retVal > basePath.Length)
+        if (currentDefaultPathPoint < 0 || currentDefaultPathPoint >= basePath.Length)
         {
-            Debug.Log(this.name + " has an invalid Default path point, clamping" + retVal);
-            retVal = Mathf.Clamp(retVal, 0, basePath.Length - 1);
+            Debug.LogWarning(this.name + " has an invalid Default path point, clamping" + currentDefaultPathPoint);
+            currentDefaultPathPoint = Mathf.Clamp(currentDefaultPathPoint, 0, basePath.Length - 1);
         }
-
-        return retVal;
     }
 
     public bool GetCanBeDistractedByAttractor()
@@ -230,37 +201,5 @@ public class PathfinderAI : MonoBehaviour
     public Transform GetTarget()
     {
         return target;
-    }
-
-    public void SetCanMove(bool newCanMove)
-    {
-        canMove = newCanMove;
-        //if the object is stopped increase the drag so it slows tf down, if its started up again remove the drag clamp
-        rb.drag = canMove ? defaultDrag : defaultDrag * dragMultiplier;
-
-        //Automatically start moving again after an amount of time (defaults to off)
-        if (!canMove && timeToAutoCanMove > 0)
-        {
-            Invoke("AutoCanMove", timeToAutoCanMove);
-        }
-    }
-
-    private void AutoCanMove()
-    {
-        if (isCandle)
-        {
-            if (candleStatus.GetIsInLight())
-            {
-                candleStatus.CalculateLightDamage();
-                Invoke("AutoCanMove", timeToAutoCanMove);
-                return;
-            }
-        }
-        SetCanMove(true);
-    }
-
-    public bool GetCanMove()
-    {
-        return canMove;
     }
 }

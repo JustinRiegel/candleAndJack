@@ -208,8 +208,9 @@ GameObject:
   m_Component:
   - component: {fileID: 90125094730030681}
   - component: {fileID: 90125094730030683}
+  - component: {fileID: 2947655239280309291}
   m_Layer: 0
-  m_Name: GFX
+  m_Name: Candle GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,7 +272,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a32385c8df33aab4096b80c8e0372a5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 2.56}
@@ -280,6 +281,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2947655239280309291
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90125094730030662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6010daf4f9992b4a83eddd932f9bef5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &90125094832323063
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,10 +311,10 @@ GameObject:
   - component: {fileID: 90125094832323018}
   - component: {fileID: 90125094832323019}
   - component: {fileID: 90125094832323017}
-  - component: {fileID: 90125094832323062}
   - component: {fileID: 90125094832323016}
   - component: {fileID: 1640061390}
   - component: {fileID: 481009209}
+  - component: {fileID: 1654302231220672128}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Candle
@@ -367,31 +387,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &90125094832323062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90125094832323063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cbf955eeffed74db5f5f62c2153767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 100
-  nextWaypointDistance: 1
-  drawDistance: 5
-  basePath:
-  - {fileID: 90125095002164774}
-  - {fileID: 90125094090289242}
-  - {fileID: 90125095086483751}
-  - {fileID: 90125094085200402}
-  linearPath: 1
-  canBeDistractedByLight: 0
-  dragMultiplier: 10
-  timeToAutoCanMove: 3
 --- !u!58 &90125094832323016
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -422,11 +417,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   _maxHealth: 3
-  _secondsPerDamageCheck: 3
   _damageTakenPerInterval: 1
   _canHeal: 0
   _healthGainedPerInterval: 1
-  _secondsPerHealthCheck: 3
+  canLoseByCandle: 1
 --- !u!114 &481009209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +453,29 @@ MonoBehaviour:
   m_ShapePathHash: -860600339
   m_Mesh: {fileID: 0}
   m_InstanceId: -73174
+--- !u!114 &1654302231220672128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90125094832323063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fca7b723b68a0f4a8be3d5c7c630d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  nextWaypointDistance: 0.5
+  basePath:
+  - {fileID: 90125095002164774}
+  - {fileID: 90125094090289242}
+  - {fileID: 90125095086483751}
+  - {fileID: 90125094085200402}
+  dragMultiplier: 10
+  timeToAutoCanMove: 3
+  canWinFromPath: 1
+  candleAnimator: {fileID: 2947655239280309291}
 --- !u!1 &90125095002164774
 GameObject:
   m_ObjectHideFlags: 0

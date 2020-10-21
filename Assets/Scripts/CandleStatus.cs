@@ -21,7 +21,7 @@ public class CandleStatus : MonoBehaviour
     private bool _isInLight = false;
     private bool _isInStationaryLight = false;
     private bool _isInTrickOrTreaterLight = false;
-    private PathfinderAI _candlePathfinderAI;
+    private CandleAI _candleAI;
 
     // Start is called before the first frame update
     private void Start()
@@ -35,7 +35,7 @@ public class CandleStatus : MonoBehaviour
             healthBar.SetMaxHealth(_maxHealth);
         }
         _currentHealth = _maxHealth;
-        _candlePathfinderAI = GameObject.FindWithTag("Candle").GetComponent<PathfinderAI>();
+        _candleAI = GameObject.FindWithTag("Candle").GetComponent<CandleAI>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,7 +49,7 @@ public class CandleStatus : MonoBehaviour
             _isInTrickOrTreaterLight = true;
         }
 
-        if (_isInStationaryLight || _isInTrickOrTreaterLight)
+        if ((_isInStationaryLight || _isInTrickOrTreaterLight) && !_isInLight)
         {
             SetInLightStatus(true);
             CalculateLightDamage();
@@ -110,7 +110,7 @@ public class CandleStatus : MonoBehaviour
     {
         if(_isInLight)
         {
-            _candlePathfinderAI.SetCanMove(!_isInLight);
+            _candleAI.SetCanMove(!_isInLight);
             TakeDamage(_damageTakenPerInterval);
         }
         else
