@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  QAbility: {fileID: 0}
+  QAbility: {fileID: 4276066463896279686, guid: 89522a52b3ef8d04ead01ec8c7d7ca79, type: 3}
+  EAbility: {fileID: 4276066463896279686, guid: 7a892ba607c85664791f0d9794fb2dd1, type: 3}
 --- !u!50 &8753123319393372412
 Rigidbody2D:
   serializedVersion: 4
@@ -121,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1425257956
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68aa284cfe60cc444ada28cf928d2dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1028843671758600006, guid: 7b36769f7dee0bf41ba3d9632199a5a8, type: 3}
   maxHealth: 100
   healingDistanceFromCandle: 4
   damagingDistanceFromCandle: 5
@@ -195,4 +196,4 @@ MonoBehaviour:
   - {x: -0.62168217, y: -0.107853174, z: 0}
   m_ShapePathHash: 1173834421
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30034
+  m_InstanceId: -1288
