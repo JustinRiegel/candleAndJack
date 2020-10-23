@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: {fileID: 846367102735882508, guid: 91a45d9a1ffe78643923ee88cf5cc82c, type: 3}
-  lightOffset: {x: -0.08, y: -1.5}
+  lightOffset: {x: -0.8, y: -1.5}
   onSprite: {fileID: 21300000, guid: 9609fe44483c2574ab9a5990ac10ea16, type: 3}
   offSprite: {fileID: 21300000, guid: e88183c968f579942bcbb5c9afb33220, type: 3}
   attractor: {fileID: 827257686681970657, guid: d404c2df3bb3a244ebc50a205241ca83, type: 3}
@@ -137,4 +137,4 @@ MonoBehaviour:
   - {x: 0.0758746, y: 1.2988265, z: 0}
   m_ShapePathHash: -1395146343
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30018
+  m_InstanceId: 28498

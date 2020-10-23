@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 90125094326300994}
   m_Layer: 0
   m_Name: Candle
-  m_TagString: Candle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +363,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a32385c8df33aab4096b80c8e0372a5b, type: 3}
+  m_Sprite: {fileID: -8970391705161179248, guid: 13d14398b1427cf4793f07697931699f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
   - {x: -0.24974313, y: -0.21940598, z: 0}
   m_ShapePathHash: -860600339
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1220
+  m_InstanceId: 27048
 --- !u!114 &1654302231220672128
 MonoBehaviour:
   m_ObjectHideFlags: 0
