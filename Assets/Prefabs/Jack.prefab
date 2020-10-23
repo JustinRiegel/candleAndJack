@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1425257956}
   - component: {fileID: 1221945068}
   - component: {fileID: 1978824575}
+  - component: {fileID: 6737716797696884337}
   m_Layer: 0
   m_Name: Jack
   m_TagString: Player
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 77be9afd7a0ed4240a23a7eed4463a59, type: 3}
+  m_Sprite: {fileID: -8757341453725773026, guid: cac9624bca22eff4c95e45ecdcc0f153, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,3 +198,22 @@ MonoBehaviour:
   m_ShapePathHash: 1173834421
   m_Mesh: {fileID: 0}
   m_InstanceId: -1288
+--- !u!95 &6737716797696884337
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753123319393372408}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45adea91960726a44bb39af6bcea0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
