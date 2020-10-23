@@ -14,6 +14,8 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] bool linearPath = false;
     [SerializeField] bool canBeDistractedByLight = true;
     [SerializeField] float timeToAutoCanMove = -1;
+    [SerializeField] GameObject UIElement;
+    [SerializeField] Vector2 UIOffset = new Vector2(0, 1.5f);
 
     private bool hasTarget = true;
     private int currentDefaultPathPoint = 0;
@@ -21,7 +23,9 @@ public class PathfinderAI : MonoBehaviour
     private Path path;
     private int currentWaypoint = 0;
     private bool isLinearPathReversed = false;
+    private Vector3 threeDUIOffset;
 
+    private GameObject currentUIElement;
     private Seeker seeker;
     private Rigidbody2D rb;
 
@@ -41,6 +45,15 @@ public class PathfinderAI : MonoBehaviour
         {
             //if the base path is empty set it to itself
             basePath = new GameObject[] { gameObject };
+        }
+
+        if (UIOffset == null)
+        {
+            threeDUIOffset = new Vector3(0, 1.5f, 0);
+        }
+        else
+        {
+            threeDUIOffset = new Vector3(UIOffset.x, UIOffset.y, 0);
         }
 
         InvokeRepeating("DeterminePath", 0f, 0.5f);
@@ -189,11 +202,20 @@ public class PathfinderAI : MonoBehaviour
         {
             hasTarget = false;
             target = null;
+            if (currentUIElement != null)
+            {
+                GameObject.Destroy(currentUIElement);
+            }
         }
         else
         {
             hasTarget = true;
-            target = newTarget.transform;
+            target = newTarget.transform; // put the thing here 
+            if (currentUIElement != null)
+            {
+                GameObject.Destroy(currentUIElement);
+            }
+            currentUIElement = Instantiate(UIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
         }
         DeterminePath();
     }
