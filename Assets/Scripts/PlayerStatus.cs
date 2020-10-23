@@ -32,6 +32,7 @@ public class PlayerStatus : MonoBehaviour
     public float critcalHealthMusicVolume = 0.6f;
 
     public bool canLoseByJack = true;
+    public bool isTutorial = false;
 
     private float healthCheckTime;
     private int currentHealth;
@@ -116,6 +117,10 @@ public class PlayerStatus : MonoBehaviour
             {
                 SceneManagerHelper.instance.ChangeScene("LossJack");
             }
+            if (isTutorial)
+            {
+                SceneManagerHelper.instance.ChangeScene("Game");
+            }    
         }
         Heartbeat();
     }

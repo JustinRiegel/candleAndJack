@@ -50,36 +50,39 @@ public class CandleAI : MonoBehaviour
             return;
         }
 
-        var distanceToTarget = Vector2.Distance(rb.position, basePath[currentDefaultPathPoint].transform.position);
-        if (distanceToTarget < nextWaypointDistance)
+        //Adding nullcheck for length here
+        if (basePath.Length != 0)
         {
-            currentDefaultPathPoint++;
-            //if we have reached the end of the path win
-            if (currentDefaultPathPoint >= basePath.Length)
+            var distanceToTarget = Vector2.Distance(rb.position, basePath[currentDefaultPathPoint].transform.position);
+            if (distanceToTarget < nextWaypointDistance)
             {
-                if (canWinFromPath)
+                currentDefaultPathPoint++;
+                //if we have reached the end of the path win
+                if (currentDefaultPathPoint >= basePath.Length)
                 {
-                    SceneManagerHelper.instance.ChangeScene("Win");
+                    if (canWinFromPath)
+                    {
+                        SceneManagerHelper.instance.ChangeScene("Win");
+                    }
+                    //even if will win from this we still don't want to error out, so set the path back to the begining
+                    currentDefaultPathPoint = 0;
                 }
-                //even if will win from this we still don't want to error out, so set the path back to the begining
-                currentDefaultPathPoint = 0;
+            }
+
+            Vector2 direction = ((Vector2)basePath[currentDefaultPathPoint].transform.position - rb.position).normalized;
+            Vector2 force = direction * speed * Time.deltaTime;
+
+            rb.AddForce(force);
+
+            if (rb.velocity.x >= 0.1f)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else if (rb.velocity.x <= -0.1f)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
-
-        Vector2 direction = ((Vector2)basePath[currentDefaultPathPoint].transform.position - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-
-        rb.AddForce(force);
-
-        if (rb.velocity.x >= 0.1f)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if (rb.velocity.x <= -0.1f)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-
     }
 
     public void SetCanMove(bool newCanMove)

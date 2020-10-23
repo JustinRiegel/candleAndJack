@@ -143,16 +143,17 @@ public class AudioManager : MonoBehaviour
         switch (next)
         {
             case 0: //Start Scene
+            case 1: //Tutorial Scene [intentional fallthrough]
                 PlaySound("StartMusic");
                 break;
-            case 1: //Game Scene
+            case 2: //Game Scene
                 PlaySound("GameMusic");
                 break;
-            case 2: //Win Scene
+            case 3: //Win Scene
                 PlaySound("WinMusic");
                 break;
-            case 3: //Lose Scene (candle)
-            case 4: //Lose Scene (jack) [intentional fallthrough]
+            case 4: //Lose Scene (candle)
+            case 5: //Lose Scene (jack) [intentional fallthrough]
                 PlaySound("LoseMusic");
                 break;
             default: //this is probably a test scene, play game music and play a debug message
