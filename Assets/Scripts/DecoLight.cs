@@ -141,9 +141,6 @@ public class DecoLight : MonoBehaviour
             }
             if (attractorInstance != null)
             {
-                //lightManager.RemoveAttractor(attractorInstance);
-                //GameObject.Destroy(attractorInstance);
-
                 foreach (Transform child in transform)
                 {
                     if (child.CompareTag("attractor"))
@@ -166,7 +163,7 @@ public class DecoLight : MonoBehaviour
     {
         _currentSeeker = currentSeeker;
     }
-
+    
     public void SetJackInLight(bool isJackInLight)
     {
         _isJackInLight = isJackInLight;
