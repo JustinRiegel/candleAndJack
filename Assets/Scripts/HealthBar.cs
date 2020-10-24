@@ -37,6 +37,10 @@ public class HealthBar : MonoBehaviour
                 var currentLerpVal = currentHealthPercent / maxScreenEffectHealthPercent;
                 screenEffect.alpha = Mathf.Lerp(1f, 0f, currentLerpVal);
             }
+            else
+            {
+                screenEffect.alpha = 0;
+            }
         }
         else
         {
