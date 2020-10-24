@@ -143,12 +143,12 @@ public class AudioManager : MonoBehaviour
         switch (next)
         {
             case 0: //Start Scene
+                StopAllSounds();
+                PlaySound("IntroMusic");
+                break;
             case 1: //Tutorial Scene [intentional fallthrough]
-                if (current <1)
-                {
-                    StopAllSounds();
-                }
-                PlaySound("StartMusic");
+                StopAllSounds();
+                PlaySound("TutorialMusic");
                 break;
             case 2: //Game Scene
                 StopAllSounds();

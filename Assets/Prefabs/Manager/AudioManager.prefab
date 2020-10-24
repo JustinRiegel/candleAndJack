@@ -62,6 +62,12 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: IntroMusic
+    clip: {fileID: 8300000, guid: 5c9b6609c2902c242a4ede8da898c260, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: StartMusic
     clip: {fileID: 8300000, guid: d47f051a2efff064bb5b68cf00871192, type: 3}
     volume: 0.7
