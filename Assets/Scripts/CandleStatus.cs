@@ -4,7 +4,7 @@ using UnityEngine;
 public class CandleStatus : MonoBehaviour
 {
 
-    public HealthBar healthBar;
+    public CandleHealthBar healthBar;
     public int _maxHealth = 3;
 
     [Header("Damage Settings")]
@@ -28,12 +28,9 @@ public class CandleStatus : MonoBehaviour
     {
         if (healthBar == null)
         {
-            Debug.LogError("Candle needs a slider with the healhbar component assigned!"); 
+            Debug.LogError("Candle needs a healhbar component assigned!"); 
         }
-        else
-        {
-            healthBar.SetMaxHealth(_maxHealth);
-        }
+
         _currentHealth = _maxHealth;
         _candleAI = GameObject.FindWithTag("Candle").GetComponent<CandleAI>();
     }
@@ -51,7 +48,7 @@ public class CandleStatus : MonoBehaviour
 
         if ((_isInStationaryLight || _isInTrickOrTreaterLight) && !_isInLight)
         {
-            SetInLightStatus(true);
+            _isInLight = true;
             CalculateLightDamage();
         }
     }
@@ -69,8 +66,7 @@ public class CandleStatus : MonoBehaviour
 
         if (!_isInStationaryLight && !_isInTrickOrTreaterLight)
         {
-            
-            SetInLightStatus(false);
+            _isInLight = false;
         }
     }
 
@@ -87,7 +83,24 @@ public class CandleStatus : MonoBehaviour
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         healthBar.SetHealth(_currentHealth);
-        if(_currentHealth == 0)
+
+        //if we add more clips increase this number.
+        //This is REAL JANK, I know.
+        int numberOfDamageClips = 2;
+
+        int randomizedClip = Random.Range(0, numberOfDamageClips - 1);
+        switch (randomizedClip)
+        {
+            case 0:
+                AudioManager.instance.PlaySound("CandleGrunt");
+                break;
+            case 1:
+                AudioManager.instance.PlaySound("CandleOw");
+                break;
+            default:
+                break;
+        }
+        if (_currentHealth == 0)
         {
             if (canLoseByCandle)
             {
@@ -101,21 +114,27 @@ public class CandleStatus : MonoBehaviour
         return _currentHealth;
     }
 
-    private void SetInLightStatus(bool inLightStatus)
-    {
-        _isInLight = inLightStatus;
-    }
-
     public void CalculateLightDamage()
     {
-        if(_isInLight)
+        if (_candleAI.GetCanMove())
         {
-            _candleAI.SetCanMove(!_isInLight);
-            TakeDamage(_damageTakenPerInterval);
+            if (_isInLight)
+            {
+                TakeDamage(_damageTakenPerInterval);
+                _candleAI.SetCanMove(!_isInLight);
+            }
+            else
+            {
+                HealDamage(_healthGainedPerInterval);
+            }
         }
-        else
+    }
+
+    public void CalculateAutoDamage()
+    {
+        if (_isInLight)
         {
-            HealDamage(_healthGainedPerInterval);
+            TakeDamage(_damageTakenPerInterval);
         }
     }
 

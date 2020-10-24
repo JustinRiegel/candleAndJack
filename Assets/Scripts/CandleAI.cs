@@ -50,36 +50,39 @@ public class CandleAI : MonoBehaviour
             return;
         }
 
-        var distanceToTarget = Vector2.Distance(rb.position, basePath[currentDefaultPathPoint].transform.position);
-        if (distanceToTarget < nextWaypointDistance)
+        //Adding nullcheck for length here
+        if (basePath.Length != 0)
         {
-            currentDefaultPathPoint++;
-            //if we have reached the end of the path win
-            if (currentDefaultPathPoint >= basePath.Length)
+            var distanceToTarget = Vector2.Distance(rb.position, basePath[currentDefaultPathPoint].transform.position);
+            if (distanceToTarget < nextWaypointDistance)
             {
-                if (canWinFromPath)
+                currentDefaultPathPoint++;
+                //if we have reached the end of the path win
+                if (currentDefaultPathPoint >= basePath.Length)
                 {
-                    SceneManagerHelper.instance.ChangeScene("Win");
+                    if (canWinFromPath)
+                    {
+                        SceneManagerHelper.instance.ChangeScene("Win");
+                    }
+                    //even if will win from this we still don't want to error out, so set the path back to the begining
+                    currentDefaultPathPoint = 0;
                 }
-                //even if will win from this we still don't want to error out, so set the path back to the begining
-                currentDefaultPathPoint = 0;
+            }
+
+            Vector2 direction = ((Vector2)basePath[currentDefaultPathPoint].transform.position - rb.position).normalized;
+            Vector2 force = direction * speed * Time.deltaTime;
+
+            rb.AddForce(force);
+
+            if (rb.velocity.x >= 0.1f)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else if (rb.velocity.x <= -0.1f)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
-
-        Vector2 direction = ((Vector2)basePath[currentDefaultPathPoint].transform.position - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-
-        rb.AddForce(force);
-
-        if (rb.velocity.x >= 0.1f)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if (rb.velocity.x <= -0.1f)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-
     }
 
     public void SetCanMove(bool newCanMove)
@@ -93,17 +96,46 @@ public class CandleAI : MonoBehaviour
         {
             Invoke("AutoCanMove", timeToAutoCanMove);
         }
+        if (canMove)
+        {
+            CancelInvoke("AutoCanMove");
+        }
 
         candleAnimator.SetBool("isHiding", !canMove);
+    }
+
+    public void ToggleCanMove()
+    {
+        //this is the ability used by jack to start/stop candle
+
+        if (candleStatus.GetIsInLight())
+        {
+            //we are currently in the light, we don't want to let the player move candle.
+            //We may want to put some sort of error sound here.
+        }
+        else
+        {
+            SetCanMove(!canMove);
+            if (canMove)
+            {
+                //start sound
+                AudioManager.instance.PlaySound("QAbilityGo");
+            }
+            else
+            {
+                //stop sound
+                AudioManager.instance.PlaySound("QAbilityStop");
+            }
+        }
 
     }
 
     private void AutoCanMove()
     {
-
+        //if we are in light when auto move time comes up apply damage that bypasses invincibility
         if (candleStatus.GetIsInLight())
         {
-            candleStatus.CalculateLightDamage();
+            candleStatus.CalculateAutoDamage();
             Invoke("AutoCanMove", timeToAutoCanMove);
             return;
         }

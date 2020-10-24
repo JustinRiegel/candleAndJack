@@ -27,4 +27,7 @@ Audio:
 Heartbeat Sounds
 https://opengameart.org/content/heartbeat-sounds
 
+Distract Icon:
+https://game-icons.net/
+
 Thanks for playing!

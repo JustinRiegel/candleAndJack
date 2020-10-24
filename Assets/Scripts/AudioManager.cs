@@ -139,24 +139,34 @@ public class AudioManager : MonoBehaviour
 
     private void LoadLevelMusic (int current, int next)
     {
-        StopAllSounds();
+       
         switch (next)
         {
             case 0: //Start Scene
+            case 1: //Tutorial Scene [intentional fallthrough]
+                if (current <1)
+                {
+                    StopAllSounds();
+                }
                 PlaySound("StartMusic");
                 break;
-            case 1: //Game Scene
+            case 2: //Game Scene
+                StopAllSounds();
                 PlaySound("GameMusic");
+                PlaySound("AmbientNoise");
                 break;
-            case 2: //Win Scene
+            case 3: //Win Scene
+                StopAllSounds();
                 PlaySound("WinMusic");
                 break;
-            case 3: //Lose Scene (candle)
-            case 4: //Lose Scene (jack) [intentional fallthrough]
+            case 4: //Lose Scene (candle)
+            case 5: //Lose Scene (jack) [intentional fallthrough]
+                StopAllSounds();
                 PlaySound("LoseMusic");
                 break;
             default: //this is probably a test scene, play game music and play a debug message
                 Debug.LogWarning("This scene has no music set, playing default music of GameMusic!");
+                StopAllSounds();
                 PlaySound("GameMusic");
                 break;
         }
