@@ -24,6 +24,7 @@ public class DecoLight : MonoBehaviour
     private Vector3 threeDUIOffset;
     private LightManager lightManager;
     private GameObject _helperText;
+    private GameObject attractorInstance;
 
     // Start is called before the first frame update
     void Start()
@@ -101,8 +102,17 @@ public class DecoLight : MonoBehaviour
             lightOn = false;
 
             //attractor stuff
-            GameObject newAttractor = Instantiate(attractor, transform.position + threeDAttractorOffset, Quaternion.identity, transform) as GameObject;
-            lightManager.AddAttractor(newAttractor);
+            if (attractor == null)
+            {
+                Debug.LogError(name + "Does not have an attractor set");
+                return;
+            }
+            if (attractorInstance != null)
+            {
+                Destroy(attractorInstance);
+            }
+            attractorInstance = Instantiate(attractor, transform.position + threeDAttractorOffset, Quaternion.identity, transform);
+            lightManager.AddAttractor(attractorInstance);
         }
 
         //Automatically turn the light back on after some amount of time
@@ -123,13 +133,15 @@ public class DecoLight : MonoBehaviour
             lightOn = true;
 
             //attractor stuff
-            foreach (Transform child in transform)
+            if (attractor == null)
             {
-                if (child.CompareTag("attractor"))
-                {
-                    lightManager.RemoveAttractor(child.gameObject);
-                    GameObject.Destroy(child.gameObject);
-                }
+                Debug.LogError(name + " does not have an attractor set");
+                return;
+            }
+            if (attractorInstance != null)
+            {
+                lightManager.RemoveAttractor(attractorInstance);
+                GameObject.Destroy(attractorInstance);
             }
         }
     }

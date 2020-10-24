@@ -48,7 +48,7 @@ public class CandleStatus : MonoBehaviour
 
         if ((_isInStationaryLight || _isInTrickOrTreaterLight) && !_isInLight)
         {
-            SetInLightStatus(true);
+            _isInLight = true;
             CalculateLightDamage();
         }
     }
@@ -66,8 +66,7 @@ public class CandleStatus : MonoBehaviour
 
         if (!_isInStationaryLight && !_isInTrickOrTreaterLight)
         {
-            
-            SetInLightStatus(false);
+            _isInLight = false;
         }
     }
 
@@ -84,7 +83,7 @@ public class CandleStatus : MonoBehaviour
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         healthBar.SetHealth(_currentHealth);
-        if(_currentHealth == 0)
+        if (_currentHealth == 0)
         {
             if (canLoseByCandle)
             {
@@ -98,21 +97,27 @@ public class CandleStatus : MonoBehaviour
         return _currentHealth;
     }
 
-    private void SetInLightStatus(bool inLightStatus)
-    {
-        _isInLight = inLightStatus;
-    }
-
     public void CalculateLightDamage()
     {
-        if(_isInLight)
+        if (_candleAI.GetCanMove())
         {
-            _candleAI.SetCanMove(!_isInLight);
-            TakeDamage(_damageTakenPerInterval);
+            if (_isInLight)
+            {
+                TakeDamage(_damageTakenPerInterval);
+                _candleAI.SetCanMove(!_isInLight);
+            }
+            else
+            {
+                HealDamage(_healthGainedPerInterval);
+            }
         }
-        else
+    }
+
+    public void CalculateAutoDamage()
+    {
+        if (_isInLight)
         {
-            HealDamage(_healthGainedPerInterval);
+            TakeDamage(_damageTakenPerInterval);
         }
     }
 

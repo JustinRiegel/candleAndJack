@@ -567,7 +567,7 @@ MonoBehaviour:
   - {fileID: 90125094085200402}
   - {fileID: 1271504081}
   dragMultiplier: 10
-  timeToAutoCanMove: 3
+  timeToAutoCanMove: 10
   canWinFromPath: 1
   candleAnimator: {fileID: 2947655239280309291}
 --- !u!1 &90125095002164774

@@ -275,7 +275,7 @@ MonoBehaviour:
   startColor: {r: 0, g: 0, b: 0, a: 0.39215687}
   endColor: {r: 0, g: 0, b: 0, a: 0}
   button: {fileID: 4276066463776793654}
-  rechargeTime: 5
+  rechargeTime: 1
 --- !u!1 &4276066465023433128
 GameObject:
   m_ObjectHideFlags: 0

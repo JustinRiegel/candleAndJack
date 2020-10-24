@@ -98,15 +98,38 @@ public class CandleAI : MonoBehaviour
         }
 
         candleAnimator.SetBool("isHiding", !canMove);
+    }
+
+    public void ToggleCanMove()
+    {
+        //this is the ability used by jack to start/stop candle
+
+        if (candleStatus.GetIsInLight())
+        {
+            //we are currently in the light, we don't want to let the player move candle.
+            //We may want to put some sort of error sound here.
+        }
+        else
+        {
+            SetCanMove(!canMove);
+            if (canMove)
+            {
+                //this is where the start whistle sound can go
+            }
+            else
+            {
+                //this is where the start whistle sound can go
+            }
+        }
 
     }
 
     private void AutoCanMove()
     {
-
+        //if we are in light when auto move time comes up apply damage that bypasses invincibility
         if (candleStatus.GetIsInLight())
         {
-            candleStatus.CalculateLightDamage();
+            candleStatus.CalculateAutoDamage();
             Invoke("AutoCanMove", timeToAutoCanMove);
             return;
         }

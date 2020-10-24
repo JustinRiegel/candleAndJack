@@ -46,7 +46,7 @@ public class AbilityCooldownManager : MonoBehaviour
             {
                 StartRecharge();
                 StartCoroutine(ShowCooldownAnimation());
-                candleAI.SetCanMove(false);
+                candleAI.ToggleCanMove();
             }
             if (abilityName == "disableLight")
             {
