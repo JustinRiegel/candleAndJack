@@ -14,7 +14,7 @@ public class LightManager : MonoBehaviour
     public void AddAttractor(GameObject newAttractor)
     {
         attractorList.Add(newAttractor);
-        CheckCurrentTargets(newAttractor);
+        updatePathfinderTargets();
     }
 
     public void RemoveAttractor(GameObject removedAttractor)
@@ -22,40 +22,7 @@ public class LightManager : MonoBehaviour
         attractorList.Remove(removedAttractor);
         updatePathfinderTargets();
     }
-
-    //i added this function for slight optimization that we don't truly need, but there's no reason to loop over every attractor
-    //every time a new one is added. simply comparing the current target of each pathfinder with the new attractor should suffice.
-    //this function will hold up for now, but i think we'll eventually some sort of way for pathfinders to "communicate"
-    //or any in range are going to head for the same attractors. but maybe that is behaviour that we want? worth discussing
-    public void CheckCurrentTargets(GameObject newAttractor)
-    {
-        Vector2 sourceLocation;
-        float currentTargetDistance;
-        float newTargetDistance;
-
-        foreach(var pathfinder in pathfinderAIs)
-        {
-            if (pathfinder.GetCanBeDistractedByAttractor())
-            {
-                sourceLocation = pathfinder.transform.position;
-                if (pathfinder.GetTarget() == null)
-                {
-                    currentTargetDistance = float.MaxValue;
-                }
-                else
-                {
-                    currentTargetDistance = Vector2.Distance(sourceLocation, pathfinder.GetTarget().position);
-                }
-                newTargetDistance = Vector2.Distance(sourceLocation, newAttractor.transform.position);
-
-                if (newTargetDistance < currentTargetDistance)
-                {
-                    pathfinder.SetNewTarget(newAttractor);
-                }
-            }
-        }
-    }
-
+    
     public GameObject FindClosestAttractor(GameObject source)
     {
         Vector2 sourceLocation = source.transform.position;
@@ -76,11 +43,19 @@ public class LightManager : MonoBehaviour
 
     private void updatePathfinderTargets()
     {
+        foreach(var npc in pathfinderAIs)
+        {
+            npc.SetNewTarget(null);
+        }
+
         foreach (PathfinderAI pathfinder in pathfinderAIs)
         {
-            if (pathfinder.GetCanBeDistractedByAttractor())
+            if (pathfinder.GetCanBeDistractedByAttractor())//i dont think this check is needed anymore since candle is no longer a pathfinder
             {
-                pathfinder.SetNewTarget(FindClosestAttractor(pathfinder.gameObject));
+                var closestAttractor = FindClosestAttractor(pathfinder.gameObject);
+                closestAttractor.GetComponentInParent<DecoLight>().SetCurrentSeeker(pathfinder);
+
+                pathfinder.SetNewTarget(closestAttractor);
             }
         }
     }
