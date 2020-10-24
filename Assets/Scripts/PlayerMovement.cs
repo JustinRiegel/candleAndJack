@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
 
     private void Start()
     {
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogWarning("Jack does not have any ability set for E");
         }
+        sr = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -44,11 +47,23 @@ public class PlayerMovement : MonoBehaviour
         {
             EAbility.UseAbility("disableLight");
         }
+
+        if (movement.x >= 0.1f)
+        {
+            sr.flipX = true;
+            
+        }
+        else if (movement.x <= -0.1f)
+        {
+            sr.flipX = false;
+        }
+
     }
 
     void FixedUpdate()
     {
         //called 50 times a second
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
     }
 }
