@@ -30,4 +30,7 @@ https://opengameart.org/content/heartbeat-sounds
 Distract Icon:
 https://game-icons.net/
 
+Font:
+https://www.1001freefonts.com/shlop.font
+
 Thanks for playing!
