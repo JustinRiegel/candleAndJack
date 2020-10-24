@@ -19,7 +19,7 @@ public class DecoLight : MonoBehaviour
     SpriteRenderer spriteRenderer;
     private bool lightOn = false;
     private bool _isJackInLight = false;
-    private bool _disableAbilityIsReady = true;
+    private bool _disableAbilityIsReady = false;
     private Vector3 threeDLightOffset;
     private Vector3 threeDAttractorOffset;
     private Vector3 threeDUIOffset;
