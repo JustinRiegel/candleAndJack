@@ -373,7 +373,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &2947655239280309291
 Animator:
   serializedVersion: 3
@@ -545,7 +545,7 @@ MonoBehaviour:
   - {x: -0.24974313, y: -0.21940598, z: 0}
   m_ShapePathHash: -860600339
   m_Mesh: {fileID: 0}
-  m_InstanceId: 27048
+  m_InstanceId: 97666
 --- !u!114 &1654302231220672128
 MonoBehaviour:
   m_ObjectHideFlags: 0

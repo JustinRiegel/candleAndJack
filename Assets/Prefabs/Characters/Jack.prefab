@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &8753123319393372415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   lowHealthMusicVolume: 0.5
   critcalHealthMusicVolume: 0.3
   canLoseByJack: 1
+  isTutorial: 0
 --- !u!114 &1978824575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +198,7 @@ MonoBehaviour:
   - {x: -0.62168217, y: -0.107853174, z: 0}
   m_ShapePathHash: 1173834421
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1288
+  m_InstanceId: 97798
 --- !u!95 &6737716797696884337
 Animator:
   serializedVersion: 3
