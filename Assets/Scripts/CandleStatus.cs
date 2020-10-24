@@ -4,7 +4,7 @@ using UnityEngine;
 public class CandleStatus : MonoBehaviour
 {
 
-    public HealthBar healthBar;
+    public CandleHealthBar healthBar;
     public int _maxHealth = 3;
 
     [Header("Damage Settings")]
@@ -28,12 +28,9 @@ public class CandleStatus : MonoBehaviour
     {
         if (healthBar == null)
         {
-            Debug.LogError("Candle needs a slider with the healhbar component assigned!"); 
+            Debug.LogError("Candle needs a healhbar component assigned!"); 
         }
-        else
-        {
-            healthBar.SetMaxHealth(_maxHealth);
-        }
+
         _currentHealth = _maxHealth;
         _candleAI = GameObject.FindWithTag("Candle").GetComponent<CandleAI>();
     }
