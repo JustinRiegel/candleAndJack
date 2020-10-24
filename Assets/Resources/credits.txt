@@ -33,4 +33,7 @@ https://game-icons.net/
 Font:
 https://www.1001freefonts.com/shlop.font
 
+Tileset & Some UI Assets:
+https://www.kenney.nl/
+
 Thanks for playing!
