@@ -83,6 +83,23 @@ public class CandleStatus : MonoBehaviour
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         healthBar.SetHealth(_currentHealth);
+
+        //if we add more clips increase this number.
+        //This is REAL JANK, I know.
+        int numberOfDamageClips = 2;
+
+        int randomizedClip = Random.Range(0, numberOfDamageClips - 1);
+        switch (randomizedClip)
+        {
+            case 0:
+                AudioManager.instance.PlaySound("CandleGrunt");
+                break;
+            case 1:
+                AudioManager.instance.PlaySound("CandleOw");
+                break;
+            default:
+                break;
+        }
         if (_currentHealth == 0)
         {
             if (canLoseByCandle)

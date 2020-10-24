@@ -72,7 +72,7 @@ public class PathfinderAI : MonoBehaviour
                     //if we are within draw distance of the closest target go towards it
                     seeker.StartPath(rb.position, target.position, OnPathComplete);
                     currentWaypoint = 0;
-                    onDefaultPath = false;
+                    SetOnDefaultPath(false);
                     return;
                 }
             }
@@ -80,7 +80,22 @@ public class PathfinderAI : MonoBehaviour
             //if we don't have a target or aren't near it go to the base path
             seeker.StartPath(rb.position, basePath[currentDefaultPathPoint].transform.position, OnPathComplete);
             currentWaypoint = 0;
-            onDefaultPath = true;
+            SetOnDefaultPath(true);
+        }
+    }
+
+
+private void SetOnDefaultPath(bool onPath)
+    {
+        onDefaultPath = onPath;
+        if (currentUIElement != null)
+        {
+            GameObject.Destroy(currentUIElement);
+        }
+        if (!onDefaultPath)
+        {
+            currentUIElement = Instantiate(UIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
+            AudioManager.instance.PlaySound("NPCDistract");
         }
     }
 
@@ -202,20 +217,11 @@ public class PathfinderAI : MonoBehaviour
         {
             hasTarget = false;
             target = null;
-            if (currentUIElement != null)
-            {
-                GameObject.Destroy(currentUIElement);
-            }
         }
         else
         {
             hasTarget = true;
             target = newTarget.transform; // put the thing here 
-            if (currentUIElement != null)
-            {
-                GameObject.Destroy(currentUIElement);
-            }
-            currentUIElement = Instantiate(UIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
         }
         DeterminePath();
     }

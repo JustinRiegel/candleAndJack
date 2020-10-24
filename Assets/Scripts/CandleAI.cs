@@ -114,11 +114,13 @@ public class CandleAI : MonoBehaviour
             SetCanMove(!canMove);
             if (canMove)
             {
-                //this is where the start whistle sound can go
+                //start sound
+                AudioManager.instance.PlaySound("QAbilityGo");
             }
             else
             {
-                //this is where the start whistle sound can go
+                //stop sound
+                AudioManager.instance.PlaySound("QAbilityStop");
             }
         }
 

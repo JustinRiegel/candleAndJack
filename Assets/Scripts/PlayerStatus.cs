@@ -98,6 +98,7 @@ public class PlayerStatus : MonoBehaviour
         if(_isNearLight && _nearbyLight != null)
         {
             _nearbyLight.TurnOffLight();
+            AudioManager.instance.PlaySound("InteractLightOff");
         }
     }
 
