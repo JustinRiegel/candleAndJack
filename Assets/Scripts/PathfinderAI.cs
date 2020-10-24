@@ -32,7 +32,6 @@ public class PathfinderAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(this.name + " nextWaypointDistance: " + nextWaypointDistance);
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 

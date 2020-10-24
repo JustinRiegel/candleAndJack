@@ -22,7 +22,6 @@ public class CandleAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(this.name + " nextWaypointDistance: " + nextWaypointDistance);
         rb = GetComponent<Rigidbody2D>();
         candleStatus = GetComponent<CandleStatus>();
 
