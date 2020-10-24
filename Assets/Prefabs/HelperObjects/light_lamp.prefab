@@ -57,7 +57,7 @@ MonoBehaviour:
   m_ShadowIntensity: 0.5
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 40
-  m_PointLightOuterAngle: 108
+  m_PointLightOuterAngle: 44
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 3
   m_PointLightDistance: 3

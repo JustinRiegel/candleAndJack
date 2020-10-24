@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bd5cd3e3893106f478faeaea7039c045, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65c7daf8525bf594c89168e9f4467899, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,11 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: {fileID: 7063581801765591869, guid: 2bc5ee0181ca9a44bbf5a342c5b80103, type: 3}
-  lightOffset: {x: 0, y: 0}
-  onSprite: {fileID: 21300000, guid: fb60011c750c2f7429b57fb283eeb29f, type: 3}
-  offSprite: {fileID: 21300000, guid: bd5cd3e3893106f478faeaea7039c045, type: 3}
+  lightOffset: {x: 0, y: 2}
+  onSprite: {fileID: 21300000, guid: 10d25fcaacd38cf46a457fbd91c538b5, type: 3}
+  offSprite: {fileID: 21300000, guid: 65c7daf8525bf594c89168e9f4467899, type: 3}
   attractor: {fileID: 827257686681970657, guid: d404c2df3bb3a244ebc50a205241ca83, type: 3}
-  attractorOffset: {x: 0, y: -1.4}
+  attractorOffset: {x: 0, y: 0}
   timeToAutoOn: -1
   defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   outlineMaterial: {fileID: 2100000, guid: 79145e3ee34eb714cafa5950a99f70af, type: 2}
@@ -127,22 +127,24 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
   m_ShapePath:
-  - {x: -0.73, y: -1.1700001, z: 0}
-  - {x: -0.06199169, y: -1.5247918, z: 0}
-  - {x: 0.6965995, y: -1.1564933, z: 0}
-  - {x: 0.6549363, y: -0.7054448, z: 0}
-  - {x: 0.94357014, y: 0.5515077, z: 0}
-  - {x: 1.27, y: 0.8299999, z: 0}
-  - {x: 1.1204743, y: 1.2591255, z: 0}
-  - {x: 0.6270046, y: 1.2311933, z: 0}
-  - {x: 0.3849244, y: 1.6129344, z: 0}
-  - {x: -0.26830435, y: 1.6685851, z: 0}
-  - {x: -0.6951237, y: 1.1753287, z: 0}
-  - {x: -0.7137451, y: 0.542197, z: 0}
-  - {x: -1.0582433, y: 0.41184616, z: 0}
-  - {x: -1.0861754, y: 0.06734824, z: 0}
-  - {x: -0.73, y: -0.17000008, z: 0}
-  - {x: -0.6578803, y: -0.64958024, z: 0}
-  m_ShapePathHash: -512984283
+  - {x: 0.8761966, y: 3.091523, z: 0}
+  - {x: 0.31973085, y: 3.5697656, z: 0}
+  - {x: -0.3694495, y: 3.5487938, z: 0}
+  - {x: -0.8245852, y: 2.934524, z: 0}
+  - {x: -0.8415048, y: 2.1677325, z: 0}
+  - {x: -1.4896641, y: 2.0618353, z: 0}
+  - {x: -1.3174124, y: 1.4547392, z: 0}
+  - {x: -0.9099375, y: 1.2544628, z: 0}
+  - {x: -0.82645094, y: 0.6804882, z: 0}
+  - {x: -1.2020622, y: 0.14743805, z: 0}
+  - {x: -1.009812, y: -0.41649556, z: 0}
+  - {x: -0.6381285, y: -0.1857953, z: 0}
+  - {x: -0.05566162, y: -0.41702485, z: 0}
+  - {x: 0.82202494, y: -0.022485018, z: 0}
+  - {x: 0.8138503, y: 0.5803764, z: 0}
+  - {x: 1.2002165, y: 2.2220662, z: 0}
+  - {x: 1.5988439, y: 2.646604, z: 0}
+  - {x: 1.4000854, y: 3.0795949, z: 0}
+  m_ShapePathHash: -247145445
   m_Mesh: {fileID: 0}
-  m_InstanceId: -72816
+  m_InstanceId: 147186

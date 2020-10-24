@@ -57,7 +57,7 @@ MonoBehaviour:
   m_ShadowIntensity: 0.5
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 40
-  m_PointLightOuterAngle: 108
+  m_PointLightOuterAngle: 44
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 3
   m_PointLightDistance: 3
@@ -130,9 +130,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.22688712, y: -0.0065363646}
-      - {x: -0.40265453, y: 0.17189567}
-      - {x: 0.09671077, y: 0.50516754}
+    - - {x: 0.32396433, y: 0.07066678}
+      - {x: -0.4969581, y: 0.16793649}
+      - {x: -0.10853806, y: 0.9406725}
 --- !u!114 &2381878144946401301
 MonoBehaviour:
   m_ObjectHideFlags: 0

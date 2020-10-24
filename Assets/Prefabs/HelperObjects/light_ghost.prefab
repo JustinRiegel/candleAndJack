@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721066959120413787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8092864244724530784}
@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.698
+  m_FalloffIntensity: 0.717
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_LightVolumeOpacity: 0.193
-  m_ApplyToSortingLayers: 00000000
+  m_LightVolumeOpacity: 0.095
+  m_ApplyToSortingLayers: 00000000efed0a9b
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -58,20 +58,29 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3.5
+  m_PointLightInnerRadius: 2
+  m_PointLightOuterRadius: 3
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffSize: 0.1
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
+  - {x: -0.0553991, y: -0.025187463, z: 0}
+  - {x: -0.043676592, y: -0.052137278, z: 0}
+  - {x: -0.009327596, y: -0.06202336, z: 0}
+  - {x: 0.027311372, y: -0.06202336, z: 0}
+  - {x: 0.04935018, y: -0.0418059, z: 0}
+  - {x: 0.053645603, y: 0.008078075, z: 0}
+  - {x: 0.07311006, y: 0.017964168, z: 0}
+  - {x: 0.070820116, y: 0.040432572, z: 0}
+  - {x: 0.039813638, y: 0.043362074, z: 0}
+  - {x: 0.0120157385, y: 0.05869514, z: 0}
+  - {x: -0.041289464, y: 0.048559174, z: 0}
+  - {x: -0.045602035, y: 0.016100103, z: 0}
+  - {x: -0.0711558, y: -0.008099183, z: 0}
 --- !u!1 &7063581801765591869
 GameObject:
   m_ObjectHideFlags: 0
