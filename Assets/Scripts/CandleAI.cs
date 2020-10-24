@@ -96,6 +96,10 @@ public class CandleAI : MonoBehaviour
         {
             Invoke("AutoCanMove", timeToAutoCanMove);
         }
+        if (canMove)
+        {
+            CancelInvoke("AutoCanMove");
+        }
 
         candleAnimator.SetBool("isHiding", !canMove);
     }
