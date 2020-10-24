@@ -20,6 +20,7 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] float timeToTurnOnLight = 1f;
     [SerializeField] float dragMultiplier = 10;
     [SerializeField] Animator animator;
+    [SerializeField] float secondsBetweenDistractSound = 5f;
 
     private bool hasTarget = true;
     private int currentDefaultPathPoint = 0;
@@ -30,6 +31,7 @@ public class PathfinderAI : MonoBehaviour
     private Vector3 threeDUIOffset;
     private bool canMove = true;
     private float defaultDrag = 1;
+    private bool hasPlayedSoundRecently = false;
 
     private GameObject currentUIElement;
     private Seeker seeker;
@@ -100,7 +102,11 @@ public class PathfinderAI : MonoBehaviour
         if (!onDefaultPath)
         {
             currentUIElement = Instantiate(UIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
-            AudioManager.instance.PlaySound("NPCDistract");
+            if (!hasPlayedSoundRecently)
+            {
+                AudioManager.instance.PlaySound("NPCDistract");
+                hasPlayedSoundRecently = true;
+            }
         }
     }
 
@@ -256,6 +262,7 @@ public class PathfinderAI : MonoBehaviour
         }
         if (canMove)
         {
+            hasPlayedSoundRecently = false;
             CancelInvoke("AutoCanMove");
         }
 
