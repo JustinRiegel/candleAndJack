@@ -14,6 +14,7 @@ public class DecoLight : MonoBehaviour
     [SerializeField] Material outlineMaterial;
     [SerializeField] GameObject interactUIElement;
     [SerializeField] Vector2 interactUIOffset;
+    [SerializeField] PathfinderAI _currentSeeker;
 
     SpriteRenderer spriteRenderer;
     private bool lightOn = false;
@@ -128,10 +129,21 @@ public class DecoLight : MonoBehaviour
                 if (child.CompareTag("attractor"))
                 {
                     lightManager.RemoveAttractor(child.gameObject);
+                    SetCurrentSeeker(null);
                     GameObject.Destroy(child.gameObject);
                 }
             }
         }
+    }
+
+    public PathfinderAI GetCurrentSeeker()
+    {
+        return _currentSeeker;
+    }
+
+    public void SetCurrentSeeker(PathfinderAI currentSeeker)
+    {
+        _currentSeeker = currentSeeker;
     }
 
     public void SetJackInLight(bool isJackInLight)

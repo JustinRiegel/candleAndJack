@@ -14,7 +14,8 @@ public class LightManager : MonoBehaviour
     public void AddAttractor(GameObject newAttractor)
     {
         attractorList.Add(newAttractor);
-        CheckCurrentTargets(newAttractor);
+        updatePathfinderTargets();
+        //CheckCurrentTargets(newAttractor);
     }
 
     public void RemoveAttractor(GameObject removedAttractor)
@@ -32,6 +33,8 @@ public class LightManager : MonoBehaviour
         Vector2 sourceLocation;
         float currentTargetDistance;
         float newTargetDistance;
+
+        var temp = newAttractor.GetComponentInParent<DecoLight>();
 
         foreach(var pathfinder in pathfinderAIs)
         {
@@ -56,6 +59,32 @@ public class LightManager : MonoBehaviour
         }
     }
 
+    public PathfinderAI FindClosestPathfinder(GameObject attractor)
+    {
+        Vector2 attractorLocation = attractor.transform.position;
+        float shortestDistance = float.MaxValue;
+        PathfinderAI closestPathfinder = null;
+
+        foreach(var npc in pathfinderAIs)
+        {
+            //if the pathfinder already has a target, it has already been determined to be closest to that attractor
+            //and so it should not be considered a potential seeker for an attractor
+            if(!npc.GetCanBeDistractedByAttractor() || npc.GetTarget() != null)
+            {
+                continue;
+            }
+
+            var currentDistance = Vector2.Distance(attractorLocation, npc.transform.position);
+            if(currentDistance < shortestDistance)
+            {
+                shortestDistance = currentDistance;
+                closestPathfinder = npc;
+            }
+        }
+
+        return closestPathfinder;
+    }
+
     public GameObject FindClosestAttractor(GameObject source)
     {
         Vector2 sourceLocation = source.transform.position;
@@ -76,12 +105,36 @@ public class LightManager : MonoBehaviour
 
     private void updatePathfinderTargets()
     {
-        foreach (PathfinderAI pathfinder in pathfinderAIs)
+        //originally we were looping over all the pathfinders and checking against their location to the attractor
+        //to determine the closest attractor to each pathfinder. with the addition of "NPC communication" that means
+        //only one pathfinder needs to go to a given attractor at a time. i am also adjusting the logic to be
+        //attractor-centric as all attractors need to have a pathfinder, but not all pathfinders need an attractor
+
+        //TODO: do we need to null out targets for all pathfinders? i think so, otherwise its possible to end up with multiple PFs heading to the same attractor
+        //we want to clear out current target of all the pathfinders because they're either going to be assigned a new target or they need to not have a target
+        foreach(var npc in pathfinderAIs)
         {
-            if (pathfinder.GetCanBeDistractedByAttractor())
-            {
-                pathfinder.SetNewTarget(FindClosestAttractor(pathfinder.gameObject));
-            }
+            npc.SetNewTarget(null);
         }
+
+        foreach(var attractor in attractorList)
+        {
+            var closestPathfinder = FindClosestPathfinder(attractor);
+            attractor.GetComponentInParent<DecoLight>().SetCurrentSeeker(closestPathfinder);
+            closestPathfinder.SetNewTarget(attractor);
+            //find closest pathfinder regardless of if it has a target or not. because we are looping over attractors, we do not need to worry about
+            //assign them as mutual targets
+        }
+
+        //foreach (PathfinderAI pathfinder in pathfinderAIs)
+        //{
+        //    if (pathfinder.GetCanBeDistractedByAttractor())
+        //    {
+        //        var closestAttractor = FindClosestAttractor(pathfinder.gameObject);
+        //        closestAttractor.GetComponentInParent<DecoLight>().SetCurrentSeeker(pathfinder);
+
+        //        pathfinder.SetNewTarget(closestAttractor);
+        //    }
+        //}
     }
 }
