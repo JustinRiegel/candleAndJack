@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &8860390154973575104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,16 +97,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightType: {fileID: 846367102735882508, guid: 44bde75232fd39749a36d1ba902c38d4, type: 3}
-  lightOffset: {x: 0.8, y: -1.5}
+  lightOffset: {x: 1, y: 0}
   onSprite: {fileID: 21300000, guid: 9609fe44483c2574ab9a5990ac10ea16, type: 3}
   offSprite: {fileID: 21300000, guid: e88183c968f579942bcbb5c9afb33220, type: 3}
   attractor: {fileID: 827257686681970657, guid: d404c2df3bb3a244ebc50a205241ca83, type: 3}
-  attractorOffset: {x: 0, y: -1}
+  attractorOffset: {x: 0, y: 0.3}
   timeToAutoOn: -1
   defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   outlineMaterial: {fileID: 2100000, guid: 79145e3ee34eb714cafa5950a99f70af, type: 2}
   interactUIElement: {fileID: 6598947557706402435, guid: 9146879e6fc7ddc41873e152d22718bc, type: 3}
-  interactUIOffset: {x: 0, y: -2.5}
+  interactUIOffset: {x: 0, y: -1.5}
+  _currentSeeker: {fileID: 0}
 --- !u!114 &1271115486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,18 +127,18 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
   m_ShapePath:
-  - {x: 0.019006878, y: -1.4834955, z: 0}
-  - {x: -0.18544292, y: -1.6665926, z: 0}
-  - {x: -0.51333404, y: -1.4662242, z: 0}
-  - {x: -0.43044662, y: 1.6193523, z: 0}
-  - {x: -0.22310257, y: 1.7465668, z: 0}
-  - {x: 0.61607766, y: 1.2348986, z: 0}
-  - {x: 0.8044107, y: 1.0683737, z: 0}
-  - {x: 0.82500005, y: 0.8681555, z: 0}
-  - {x: 0.60310066, y: 0.8670645, z: 0}
-  - {x: 0.4033271, y: 0.88603497, z: 0}
-  - {x: 0.3701564, y: 1.0625639, z: 0}
-  - {x: -0.05680847, y: 1.32094, z: 0}
-  m_ShapePathHash: 1405111307
+  - {x: 0.32420316, y: -0.04611993, z: 0}
+  - {x: 0.11975336, y: -0.22921705, z: 0}
+  - {x: -0.20813775, y: -0.028848648, z: 0}
+  - {x: -0.12525034, y: 3.056728, z: 0}
+  - {x: 0.082093716, y: 3.1839423, z: 0}
+  - {x: 0.92127395, y: 2.672274, z: 0}
+  - {x: 1.109607, y: 2.5057492, z: 0}
+  - {x: 1.1301963, y: 2.305531, z: 0}
+  - {x: 0.90829694, y: 2.30444, z: 0}
+  - {x: 0.7085234, y: 2.3234105, z: 0}
+  - {x: 0.6753527, y: 2.4999394, z: 0}
+  - {x: 0.24838781, y: 2.7583156, z: 0}
+  m_ShapePathHash: -2048217084
   m_Mesh: {fileID: 0}
-  m_InstanceId: -35572
+  m_InstanceId: 122544

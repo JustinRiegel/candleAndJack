@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &1553048427153915257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: 79145e3ee34eb714cafa5950a99f70af, type: 2}
   interactUIElement: {fileID: 6598947557706402435, guid: 9146879e6fc7ddc41873e152d22718bc, type: 3}
   interactUIOffset: {x: 0.5, y: -2.2}
+  _currentSeeker: {fileID: 0}
 --- !u!114 &207659265
 MonoBehaviour:
   m_ObjectHideFlags: 0

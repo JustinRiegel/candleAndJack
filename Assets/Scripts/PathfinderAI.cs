@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Pathfinding;
+using System.Collections;
 
 public class PathfinderAI : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] GameObject[] basePath;
     [SerializeField] bool linearPath = false;
     [SerializeField] bool canBeDistractedByLight = true;
-    [SerializeField] float timeToAutoCanMove = -1;
     [SerializeField] GameObject UIElement;
     [SerializeField] Vector2 UIOffset = new Vector2(0, 1.5f);
+    [Range(0f, 20f)]
+    [SerializeField] float timeToTurnOnLight = 1f;
+    [SerializeField] float dragMultiplier = 10;
+    [SerializeField] Animator animator;
 
     private bool hasTarget = true;
     private int currentDefaultPathPoint = 0;
@@ -24,6 +28,8 @@ public class PathfinderAI : MonoBehaviour
     private int currentWaypoint = 0;
     private bool isLinearPathReversed = false;
     private Vector3 threeDUIOffset;
+    private bool canMove = true;
+    private float defaultDrag = 1;
 
     private GameObject currentUIElement;
     private Seeker seeker;
@@ -84,7 +90,7 @@ public class PathfinderAI : MonoBehaviour
     }
 
 
-private void SetOnDefaultPath(bool onPath)
+    private void SetOnDefaultPath(bool onPath)
     {
         onDefaultPath = onPath;
         if (currentUIElement != null)
@@ -118,6 +124,13 @@ private void SetOnDefaultPath(bool onPath)
 
             return;
         }
+
+        //if we can't move return immediatley
+        if (!canMove)
+        {
+            return;
+        }
+
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
@@ -157,7 +170,7 @@ private void SetOnDefaultPath(bool onPath)
 
     }
 
-    private void  DetermineNextDefaultPathPoint()
+    private void DetermineNextDefaultPathPoint()
     {
 
         //for linear paths we travel to the end of the path point by point and then travel back by reversing those points
@@ -228,5 +241,34 @@ private void SetOnDefaultPath(bool onPath)
     public Transform GetTarget()
     {
         return target;
+    }
+
+    public void SetCanMove(bool newCanMove)
+    {
+        canMove = newCanMove;
+        //if the object is stopped increase the drag so it slows tf down, if its started up again remove the drag clamp
+        rb.drag = canMove ? defaultDrag : defaultDrag * dragMultiplier;
+
+        //Automatically start moving again after an amount of time (defaults to off)
+        if (!canMove)
+        {
+            Invoke("AutoCanMove", timeToTurnOnLight);
+        }
+        if (canMove)
+        {
+            CancelInvoke("AutoCanMove");
+        }
+
+        animator.SetBool("CanMove", canMove);
+    }
+
+    private void AutoCanMove()
+    {
+        SetCanMove(true);
+    }
+
+    public float getTimeToTurnOnLight()
+    {
+        return timeToTurnOnLight;
     }
 }

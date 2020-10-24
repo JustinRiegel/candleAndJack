@@ -347,9 +347,11 @@ MonoBehaviour:
   - {fileID: 8965893458565607394}
   linearPath: 0
   canBeDistractedByLight: 1
-  timeToAutoCanMove: -1
   UIElement: {fileID: 6598947557706402435, guid: 0e3dea1b16aef904c9b83916a2b4d3a5, type: 3}
   UIOffset: {x: 0, y: 1.5}
+  timeToTurnOnLight: 1
+  dragMultiplier: 10
+  animator: {fileID: 8965893457314479016}
 --- !u!58 &8965893457416887352
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -363,9 +365,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.20172179, y: -0.6644974}
+  m_Offset: {x: 0.05788949, y: 0.62656736}
   serializedVersion: 2
-  m_Radius: 0.4406706
+  m_Radius: 0.3413583
 --- !u!114 &874696039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +401,7 @@ MonoBehaviour:
   - {x: -0.59545505, y: -0.11422288, z: 0}
   m_ShapePathHash: 254115928
   m_Mesh: {fileID: 0}
-  m_InstanceId: 51178
+  m_InstanceId: 112318
 --- !u!1 &8965893457586613206
 GameObject:
   m_ObjectHideFlags: 0
