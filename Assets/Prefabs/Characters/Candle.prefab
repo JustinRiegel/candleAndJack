@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: efed0a9b00000000
+  m_ApplyToSortingLayers: efed0a9b00000000274078db
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -533,19 +533,19 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: efed0a9b0000000023ef05f6
   m_ShapePath:
-  - {x: -0.33145845, y: -0.5106119, z: 0}
-  - {x: -0.21767783, y: -0.7003839, z: 0}
-  - {x: 0.006778538, y: -0.75535274, z: 0}
-  - {x: 0.19458902, y: -0.70496464, z: 0}
-  - {x: 0.3503342, y: -0.5171542, z: 0}
-  - {x: 0.29238272, y: -0.26325166, z: 0}
-  - {x: 0.26489818, y: 0.4430429, z: 0}
-  - {x: 0.020520806, y: 0.5639009, z: 0}
-  - {x: -0.28565106, y: 0.43846208, z: 0}
-  - {x: -0.24974313, y: -0.21940598, z: 0}
-  m_ShapePathHash: -860600339
+  - {x: 0.3505743, y: 0.23751736, z: 0}
+  - {x: 0.47762692, y: 0.42975187, z: 0}
+  - {x: 0.40168878, y: 0.7087761, z: 0}
+  - {x: 0.042785347, y: 0.8736826, z: 0}
+  - {x: -0.26338652, y: 0.7482438, z: 0}
+  - {x: -0.376077, y: 0.5325961, z: 0}
+  - {x: -0.31000417, y: 0.2771149, z: 0}
+  - {x: -0.13381015, y: 0.18461303, z: 0}
+  - {x: 0.03357415, y: -0.070868194, z: 0}
+  - {x: 0.21857765, y: 0.21104215, z: 0}
+  m_ShapePathHash: 1208441604
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58558
+  m_InstanceId: 141096
 --- !u!114 &1654302231220672128
 MonoBehaviour:
   m_ObjectHideFlags: 0

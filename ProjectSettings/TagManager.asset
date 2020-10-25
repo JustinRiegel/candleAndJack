@@ -50,12 +50,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 4127584035
-    locked: 0
   - name: Foreground
     uniqueID: 3682091047
     locked: 0
   - name: Player/Objects
     uniqueID: 2113564639
+    locked: 0
+  - name: UI
+    uniqueID: 4127584035
     locked: 0

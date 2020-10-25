@@ -148,7 +148,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case 1: //Tutorial Scene [intentional fallthrough]
                 StopAllSounds();
-                PlaySound("TutorialMusic");
+                PlaySound("StartMusic");
                 break;
             case 2: //Game Scene
                 StopAllSounds();
