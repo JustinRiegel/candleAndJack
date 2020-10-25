@@ -99,7 +99,7 @@ MonoBehaviour:
   lightType: {fileID: 7063581801765591869, guid: 2bc5ee0181ca9a44bbf5a342c5b80103, type: 3}
   lightOffset: {x: 0, y: 1}
   onSprite: {fileID: 21300000, guid: cc2deb4bf76504f49a88026e5bf2bb18, type: 3}
-  offSprite: {fileID: 21300000, guid: cc2deb4bf76504f49a88026e5bf2bb18, type: 3}
+  offSprite: {fileID: 21300000, guid: 7b48e8326b8b26d40833661dff7c40bd, type: 3}
   attractor: {fileID: 827257686681970657, guid: d404c2df3bb3a244ebc50a205241ca83, type: 3}
   attractorOffset: {x: 0, y: 0}
   timeToAutoOn: -1
