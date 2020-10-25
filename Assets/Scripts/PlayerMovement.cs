@@ -1,6 +1,4 @@
-﻿using UnityEditor.Macros;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 //Requires that the gameobject this compontent is on also has a Rigidbody2D
 [RequireComponent(typeof(Rigidbody2D))]

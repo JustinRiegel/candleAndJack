@@ -82,7 +82,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7752953186374431648}
   - component: {fileID: 3596696819689333917}
-  - component: {fileID: 2381878144946401301}
   m_Layer: 0
   m_Name: light_lamp_right
   m_TagString: light
@@ -133,15 +132,3 @@ PolygonCollider2D:
     - - {x: 0.32396433, y: 0.07066678}
       - {x: -0.4969581, y: 0.16793649}
       - {x: -0.10853806, y: 0.9406725}
---- !u!114 &2381878144946401301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846367102735882508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5221c25e25f064fa039ce4f552cf64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

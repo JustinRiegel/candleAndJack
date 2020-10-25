@@ -12,7 +12,6 @@ public class TurnOnLight : MonoBehaviour
             {
                 pathfinderAI.SetCanMove(false);
                 var timeToLight = pathfinderAI.getTimeToTurnOnLight();
-                Debug.Log(this.name + "Invoking TurnOnParentLight in " + timeToLight);
                 Invoke("TurnOnParentLight", timeToLight);
             }
         }
@@ -24,7 +23,6 @@ public class TurnOnLight : MonoBehaviour
         DecoLight dL = transform.parent.gameObject.GetComponent<DecoLight>();
         if (dL != null)
         {
-            Debug.Log (this.name + " TurnOnParentLight Invoked");
             dL.TurnOnLight();
         }
     }

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Pathfinding;
-using System.Collections;
 
 public class PathfinderAI : MonoBehaviour
 {
