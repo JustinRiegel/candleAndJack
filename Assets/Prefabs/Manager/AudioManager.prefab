@@ -88,13 +88,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CandleGrunt
     clip: {fileID: 8300000, guid: d181232a3b3d1f24999a416587548949, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: CandleOw
     clip: {fileID: 8300000, guid: 47761e1ff5d344049a1ff8758ee07ace, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -106,13 +106,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: NPCDistract
     clip: {fileID: 8300000, guid: 4ed8b1e95b5159a46b4d56d43514fcfb, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: QAbilityGo
     clip: {fileID: 8300000, guid: db263f6c31654ca4088ea92b2ed988c0, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: AmbientNoise
     clip: {fileID: 8300000, guid: 055e490ffa279974cb95c15f1456a1e3, type: 3}
-    volume: 0.7
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
