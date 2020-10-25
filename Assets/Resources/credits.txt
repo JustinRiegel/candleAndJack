@@ -10,11 +10,10 @@
 Shock and Awwww Game Jam
 
 Alex - Level Designer
-Coby West -Jack of All Trades
-Dan - Consulting
-Jessie - Artist
+Coby West - Jack of All Trades
+Jessie Downs - Artist/Animator
 Josh - Programmer
-Justin - Programmer
+Justin R - Programmer
 Mara - Artist
 Mathew Dwyer - Composer
 
@@ -27,13 +26,20 @@ Audio:
 Heartbeat Sounds
 https://opengameart.org/content/heartbeat-sounds
 
-Distract Icon:
+UI Sounds
+https://www.kenney.nl/
+
+NPC Indicator Icons:
 https://game-icons.net/
 
 Font:
 https://www.1001freefonts.com/shlop.font
 
-Tileset & Some UI Assets:
+Temporary Tilesets & Healtbar Asset:
 https://www.kenney.nl/
+
+Special Thanks:
+Coby (for reverse uno-ing)
+Dan (for helping brainstorm)
 
 Thanks for playing!
