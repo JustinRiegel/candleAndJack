@@ -15,12 +15,12 @@ public class PathfinderAI : MonoBehaviour
     [SerializeField] bool linearPath = false;
     [SerializeField] bool canBeDistractedByLight = true;
     [SerializeField] GameObject UIElement;
+    [SerializeField] GameObject FixingUIElement;
     [SerializeField] Vector2 UIOffset = new Vector2(0, 1.5f);
     [Range(0f, 20f)]
     [SerializeField] float timeToTurnOnLight = 1f;
     [SerializeField] float dragMultiplier = 10;
     [SerializeField] Animator animator;
-    [SerializeField] float secondsBetweenDistractSound = 5f;
 
     private bool hasTarget = true;
     private int currentDefaultPathPoint = 0;
@@ -31,11 +31,11 @@ public class PathfinderAI : MonoBehaviour
     private Vector3 threeDUIOffset;
     private bool canMove = true;
     private float defaultDrag = 1;
-    private bool hasPlayedSoundRecently = false;
 
     private GameObject currentUIElement;
     private Seeker seeker;
     private Rigidbody2D rb;
+    private bool originalDistractStatus;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +62,13 @@ public class PathfinderAI : MonoBehaviour
         {
             threeDUIOffset = new Vector3(UIOffset.x, UIOffset.y, 0);
         }
+
+        if (FixingUIElement == null)
+        {
+            FixingUIElement = UIElement;
+        }
+
+        originalDistractStatus = canBeDistractedByLight;
 
         InvokeRepeating("DeterminePath", 0f, 0.5f);
     }
@@ -94,18 +101,17 @@ public class PathfinderAI : MonoBehaviour
 
     private void SetOnDefaultPath(bool onPath)
     {
-        onDefaultPath = onPath;
-        if (currentUIElement != null)
+        if (onDefaultPath != onPath)
         {
-            GameObject.Destroy(currentUIElement);
-        }
-        if (!onDefaultPath)
-        {
-            currentUIElement = Instantiate(UIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
-            if (!hasPlayedSoundRecently)
+            onDefaultPath = onPath;
+            if (currentUIElement != null)
             {
+                GameObject.Destroy(currentUIElement);
+            }
+            if (!onDefaultPath)
+            {
+                currentUIElement = Instantiate(UIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
                 AudioManager.instance.PlaySound("NPCDistract");
-                hasPlayedSoundRecently = true;
             }
         }
     }
@@ -251,6 +257,11 @@ public class PathfinderAI : MonoBehaviour
 
     public void SetCanMove(bool newCanMove)
     {
+        if (currentUIElement != null)
+        {
+            GameObject.Destroy(currentUIElement);
+        }
+
         canMove = newCanMove;
         //if the object is stopped increase the drag so it slows tf down, if its started up again remove the drag clamp
         rb.drag = canMove ? defaultDrag : defaultDrag * dragMultiplier;
@@ -259,11 +270,13 @@ public class PathfinderAI : MonoBehaviour
         if (!canMove)
         {
             Invoke("AutoCanMove", timeToTurnOnLight);
+            currentUIElement = Instantiate(FixingUIElement, transform.position + threeDUIOffset, Quaternion.identity, transform);
+            canBeDistractedByLight = false;
         }
         if (canMove)
         {
-            hasPlayedSoundRecently = false;
             CancelInvoke("AutoCanMove");
+            canBeDistractedByLight = originalDistractStatus;
         }
 
         animator.SetBool("CanMove", canMove);

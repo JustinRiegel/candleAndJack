@@ -348,6 +348,7 @@ MonoBehaviour:
   linearPath: 0
   canBeDistractedByLight: 1
   UIElement: {fileID: 6598947557706402435, guid: 0e3dea1b16aef904c9b83916a2b4d3a5, type: 3}
+  FixingUIElement: {fileID: 6598947557706402435, guid: adf1648729b24984289f6bbab2feba28, type: 3}
   UIOffset: {x: 0, y: 1.5}
   timeToTurnOnLight: 1
   dragMultiplier: 10
@@ -401,7 +402,7 @@ MonoBehaviour:
   - {x: -0.19640851, y: -0.54811764, z: 0}
   m_ShapePathHash: -662392874
   m_Mesh: {fileID: 0}
-  m_InstanceId: 114614
+  m_InstanceId: 251860
 --- !u!1 &8965893457586613206
 GameObject:
   m_ObjectHideFlags: 0
