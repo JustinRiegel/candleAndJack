@@ -156,24 +156,36 @@ public class PlayerStatus : MonoBehaviour
         {
             AudioManager.instance.StopSound("HeartbeatSlow");
             AudioManager.instance.PlaySound("HeartbeatFast");
+            //In Game Scene
             AudioManager.instance.ChangePitch("GameMusic", critcalHealthPitch);
             AudioManager.instance.ChangeVolume("GameMusic", critcalHealthMusicVolume);
+            //In Tutorial Scene
+            AudioManager.instance.ChangePitch("StartMusic", critcalHealthPitch);
+            AudioManager.instance.ChangeVolume("StartMusic", critcalHealthMusicVolume);
         }
         //bad health
         else if (currentPercentHealth < (lowHealthPercent / 100f))
         {
             AudioManager.instance.StopSound("HeartbeatFast");
             AudioManager.instance.PlaySound("HeartbeatSlow");
+            //In Game Scene
             AudioManager.instance.ChangePitch("GameMusic", lowHealthPitch);
             AudioManager.instance.ChangeVolume("GameMusic", lowHealthMusicVolume);
+            //In Tutorial Scene
+            AudioManager.instance.ChangePitch("StartMusic", lowHealthPitch);
+            AudioManager.instance.ChangeVolume("StartMusic", lowHealthMusicVolume);
         }
         //vibing
         else
         {
             AudioManager.instance.StopSound("HeartbeatFast");
             AudioManager.instance.StopSound("HeartbeatSlow");
+            //In Game Scene
             AudioManager.instance.ChangePitch("GameMusic", 1f);
             AudioManager.instance.ChangeVolume("GameMusic", 1f);
+            //In Tutorial Scene
+            AudioManager.instance.ChangePitch("StartMusic", 1f);
+            AudioManager.instance.ChangeVolume("StartMusic", 1f);
         }
     }
 
