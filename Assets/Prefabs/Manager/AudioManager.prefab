@@ -57,7 +57,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: GameMusic
-    clip: {fileID: 8300000, guid: ae8e0322a586f8348a19839746d09f81, type: 3}
+    clip: {fileID: 8300000, guid: 575269f1f9df71747a419b9a2ecc6715, type: 3}
     volume: 0.7
     pitch: 1
     loop: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: LoseMusic
-    clip: {fileID: 8300000, guid: 08881d50b5fbf8a4d9e862ae53d4479a, type: 3}
+    clip: {fileID: 8300000, guid: ef0fa23bb753a3147a6dee265908eb7e, type: 3}
     volume: 0.7
     pitch: 1
     loop: 1
